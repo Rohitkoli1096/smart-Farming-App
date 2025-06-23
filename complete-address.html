@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complete Address</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f0ff;
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+      margin-top: 30px;
+    }
+
+    .state-box {
+      background: white;
+      margin: 0 auto 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 15px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .state-box img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .state-info {
+      flex-grow: 1;
+    }
+
+    .state-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .state-info button {
+      background: none;
+      color: green;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0;
+      font-size: 14px;
+    }
+
+    form {
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: 500;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .footer-btn {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0033cc;
+      color: white;
+      padding: 16px;
+      font-size: 18px;
+      font-style: italic;
+      text-align: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      cursor: pointer;
+    }
+
+    header {
+      background-color: #b2d8ff;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    .logo strong {
+      color: #003399;
+    }
+
+    .header-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .header-btn {
+      background-color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Logo" />
+    </div>
+    <div class="header-btns">
+      <div class="header-btn">📞 Help</div>
+      <div class="header-btn">🌐 Eng</div>
+    </div>
+  </header>
+
+  <h2>Share your complete address</h2>
+
+  <div class="state-box">
+    <img id="stateImage" src="" alt="State Image" />
+    <div class="state-info">
+      <h3 id="selectedState">Loading...</h3>
+      <button onclick="changeState()">Change</button>
+    </div>
+  </div>
+
+  <form id="addressForm">
+    <div>
+      <label for="district">District</label><br />
+      <input type="text" id="district" placeholder="Enter District" required />
+    </div>
+
+    <div>
+      <label for="tehsil">Tehsil</label><br />
+      <input type="text" id="tehsil" placeholder="Enter Tehsil" required />
+    </div>
+
+    <div>
+      <label for="village">Village</label><br />
+      <input type="text" id="village" placeholder="Village Name" />
+    </div>
+
+    <div>
+      <label for="address">Address</label><br />
+      <input type="text" id="address" placeholder="Full Address" />
+    </div>
+
+    <div>
+      <label for="pincode">Pincode</label><br />
+      <input type="text" id="pincode" placeholder="6-digit PIN code" maxlength="6" />
+    </div>
+  </form>
+
+  <div class="footer-btn" onclick="submitAddress()">Continue</div>
+
+  <script>
+    const state = localStorage.getItem("selectedStateName") || "Select State";
+    const stateImage = localStorage.getItem("selectedStateImage") || "";
+
+    document.getElementById("selectedState").innerText = state;
+    document.getElementById("stateImage").src = stateImage;
+
+    function changeState() {
+      window.location.href = "stateselect.html";
+    }
+
+    function submitAddress() {
+      const district = document.getElementById("district").value.trim();
+      const tehsil = document.getElementById("tehsil").value.trim();
+      const village = document.getElementById("village").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const pincode = document.getElementById("pincode").value.trim();
+
+      if (!district || !tehsil) {
+        alert("Please fill in required fields.");
+        return;
+      }
+
+      const fullAddress = {
+        state,
+        district,
+        tehsil,
+        village,
+        address,
+        pincode,
+        stateImage
+      };
+      localStorage.setItem("userAddress", JSON.stringify(fullAddress));
+      window.location.href = "resistration.html";
+    }
+  </script>
+
+</body>
+</html>

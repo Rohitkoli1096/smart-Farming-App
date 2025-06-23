@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enter Mobile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fbff;
+    }
+
+    header {
+      background: #d0e8ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+    }
+
+    .logo img {
+      height: 35px;
+    }
+
+    .btns button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background-color: white;
+      font-size: 14px;
+    }
+
+    main {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 16px;
+      display: block;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .input-group select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .input-group input{
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .input-group select {
+      margin-right: 10px;
+    }
+
+    .tip {
+      font-size: 14px;
+      color: #555;
+      margin: 8px 0 20px;
+    }
+
+    .referral {
+      background-color: #fff3cd;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 15px;
+      color: #856404;
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .referral::before {
+      content: '👥';
+    }
+
+    .terms {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .terms a {
+      color: #0033cc;
+      text-decoration: none;
+    }
+
+    .btn {
+      background-color: #0033cc;
+      color: white;
+      padding: 14px;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 12px;
+      font-style: italic;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+    <div class="btns">
+      <button>🔗 Help</button>
+      <button>🌐 Eng</button>
+    </div>
+  </header>
+
+  <main>
+    <h2>Welcome to Gramophone</h2>
+    <label for="mobile">Enter Mobile Number</label>
+
+    <div class="input-group">
+      <select id="countryCode">
+        <option value="+91" selected>🇮🇳 +91</option>
+      </select>
+      <input type="tel" id="name" placeholder="Enter Mobile Number" maxlength="10" />
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="mobile" placeholder="Enter Name"/>
+    </div>
+
+    <div class="tip">TIP: Use your WhatsApp number for notification</div>
+
+    <div class="referral">Do you have referral code?</div>
+
+    <div class="terms">
+      By Continue you agree to our <a href="#">Terms</a>
+    </div>
+
+    <div class="btn" onclick="saveNumber()">Continue</div>
+  </main>
+
+  <script>
+    function saveNumber() {
+      const mobile = document.getElementById('mobile').value.trim();
+      const code = document.getElementById('countryCode').value;
+      const name = document.getElementById('name').value;
+      if (name.length !== 10 || isNaN(name)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      localStorage.setItem("userMobile", code + mobile);
+      window.location.href = "index.html"; // Go to next page
+    }
+  </script>
+
+</body>
+</html>

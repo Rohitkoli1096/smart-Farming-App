@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+  color: #1b3e20;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+main h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 24px 0;
+  color: #2e7d32;
+}
+
+.search-box {
+  display: block;
+  width: 90%;
+  margin: 0 auto 24px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.crop-guide {
+  padding: 16px;
+  display: grid;
+  gap: 24px;
+}
+
+.crop-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.crop-card:hover {
+  transform: translateY(-5px);
+}
+
+.crop-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.crop-card h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #1a3e2c;
+}
+
+.crop-card p,
+.crop-card ul,
+.crop-card table {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.crop-card ul {
+  padding-left: 18px;
+}
+
+.crop-card ul li {
+  margin-bottom: 6px;
+}
+
+.crop-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.crop-card table th,
+.crop-card table td {
+  border: 1px solid #ccc;
+  width: 20%;
+  padding: 8px;
+  text-align: left;
+}
+
+.crop-card a {
+  color: #2e7d32;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .crop-guide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1>Cotton Farming Guide</h1>
+    <input type="text" placeholder="Search crops..." class="search-box" />
+
+    <div class="crop-guide">
+
+        <div class="crop-card">
+          <h2>📌 Introduction</h2>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8aXaw-8ULxihCqX2wafKARzhjJxae7jffKQ&s" alt="Cotton Introduction" />
+          <p>Cotton is one of the most important fiber crops in the world. It's used to make textiles, oil, animal feed, and more. Grown in warm climates, cotton farming supports millions of livelihoods and plays a crucial role in global agriculture and trade.</p>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtMWLI_koH78cEIxiW9njazt0ZeVzqRDxLhQ&s" alt="Cotton Varieties" />
+          <h2>🧬 1. Types of Cotton</h2>
+          <ul>
+            <li><strong>American Upland:</strong> Most common, shorter fibers, high yield</li>
+            <li><strong>Egyptian Cotton:</strong> Long, silky fibers, premium quality</li>
+            <li><strong>Pima Cotton:</strong> Extra-long staple fibers, very soft</li>
+            <li><strong>Organic Cotton:</strong> Grown without synthetic chemicals</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3srFUqqOms5nCMo5JaOGGHTDTBMJFzaxZag&s" alt="Climate" />
+          <h2>🌍 2. Suitable Climate & Conditions</h2>
+          <h4>☀️ Climate</h4>
+          <ul>
+            <li>Temperature: 21°C to 30°C</li>
+            <li>Rainfall: 50–100 cm</li>
+            <li>Frost-free period: Minimum 200 days</li>
+          </ul>
+          <h4>🌾 Soil</h4>
+          <ul>
+            <li>Well-drained, sandy loam or black soil</li>
+            <li>pH: 5.8 to 8.0</li>
+            <li>Rich in organic matter</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://cdn.shopify.com/s/files/1/1414/7024/files/Sustainable_cycle_for_organic_cotton_480x480.png?v=1675851853" alt="Farming Methods" />
+          <h2>🌱 3. Farming Methods</h2>
+          <ul>
+            <li><strong>Conventional Farming:</strong> Use of hybrids, chemical fertilizers, and pesticides</li>
+            <li><strong>Organic Farming:</strong> Uses compost, bio-fertilizers, and natural pest control</li>
+            <li><strong>Precision Farming:</strong> GPS-guided sowing, drone spraying, and monitoring</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR5FhNjJzNdnZfafLPCIYxcKx1rwvt8zw0Zw&s" alt="Land Preparation" />
+          <h2>🧪 4. Land Preparation</h2>
+          <ul>
+            <li><strong>Ploughing:</strong> 2–3 times to loosen soil</li>
+            <li><strong>Levelling:</strong> For proper drainage</li>
+            <li><strong>Ridges and Furrows:</strong> Recommended for rainwater conservation</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2023/6/312796853/XP/WC/XS/160978355/cotton-seed-500x500-2--500x500.webp" alt="Seed Selection" />
+          <h2>🌾 5. Seed Selection and Sowing</h2>
+          <p><strong>Seed Selection:</strong> Choose certified, pest-resistant hybrid varieties</p>
+          <p><strong>Common Varieties:</strong> BT Cotton, Bunny, Suraj, JK Desi, Ankur 651</p>
+          <p><strong>Sowing Time:</strong> May to July (depending on region)</p>
+          <p><strong>Sowing Method:</strong> Dibbling or drilling</p>
+          <p><strong>Spacing:</strong> 60 x 30 cm</p>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://h2oglobalnews.com/wp-content/uploads/2023/09/Irrigation-Scheduling-for-Cotton-Cultivation.webp" alt="Irrigation" />
+          <h2>💧 6. Irrigation</h2>
+          <ul>
+            <li>Pre-sowing irrigation</li>
+            <li>First irrigation after 4–6 weeks</li>
+            <li>Subsequent irrigation every 2–3 weeks</li>
+            <li>Drip irrigation is water-efficient</li>
+          </ul>
+        </div>
+        <div class="crop-card">
+            <h2>📅 7. Sowing Season by Region</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+              <tr>
+                <th>Region</th>
+                <th>Sowing Time</th>
+                <th>Harvest Time</th>
+              </tr>
+              <tr>
+                <td>Northern India (Punjab, Haryana)</td>
+                <td>April – May</td>
+                <td>October – November</td>
+              </tr>
+              <tr>
+                <td>Central India (Maharashtra, MP)</td>
+                <td>June – July</td>
+                <td>November – January</td>
+              </tr>
+              <tr>
+                <td>Southern India (Tamil Nadu, Andhra)</td>
+                <td>July – August or January (irrigated)</td>
+                <td>December – March</td>
+              </tr>
+            </table>
+          </div>
+          
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCtzZ_CBCKp6mwkPo5fe4WDkPdCVcJxkQGww&s" alt="Pest Management" />
+          <h2>🌿 8. Weed and Pest Management</h2>
+          <ul>
+            <li><strong>Weeds:</strong> Remove manually or use herbicides like Pendimethalin</li>
+            <li><strong>Major Pests:</strong> Bollworms, Aphids, Whiteflies, Jassids</li>
+            <li><strong>Control:</strong> IPM, neem oil sprays, pheromone traps, insecticides (last resort)</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+            <h2>🌿 9. Fertilizer Management</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+              <tr>
+                <th>Fertilizer Type</th>
+                <th>Quantity per Hectare</th>
+                <th>Application Time</th>
+              </tr>
+              <tr>
+                <td>Nitrogen (N)</td>
+                <td>100–150 kg</td>
+                <td>Split: 50% at sowing, 50% during flowering</td>
+              </tr>
+              <tr>
+                <td>Phosphorus (P<sub>2</sub>O<sub>5</sub>)</td>
+                <td>50–60 kg</td>
+                <td>Basal dose during land preparation</td>
+              </tr>
+              <tr>
+                <td>Potassium (K<sub>2</sub>O)</td>
+                <td>50–60 kg</td>
+                <td>Split between sowing and boll formation</td>
+              </tr>
+              <tr>
+                <td>Micronutrients (Zn, B, Fe)</td>
+                <td>As per soil test</td>
+                <td>Foliar spray or soil application</td>
+              </tr>
+            </table>
+          </div>
+          
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcMnWNUB64L-pSkB_2nbxkAJeRhMHXNwRfOg&s" alt="Harvesting" />
+          <h2>🔪 10. Harvesting</h2>
+          <ul>
+            <li><strong>Time:</strong> 5–6 months after sowing</li>
+            <li><strong>Signs:</strong> Bolls open fully, fibers appear fluffy</li>
+            <li><strong>Method:</strong> Hand picking or mechanical harvesters</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpwQZkVRlRkizNwPbqShGnTeynD_iKYGdQcw&s" alt="Post Harvest" />
+          <h2>🏭 11. Post-Harvest Processing</h2>
+          <ul>
+            <li><strong>Ginning:</strong> Remove seeds from lint</li>
+            <li><strong>Drying:</strong> Reduce moisture content before storage</li>
+            <li><strong>Packing:</strong> Pack cotton in bales for market</li>
+            <li><strong>Storage:</strong> Keep in dry, ventilated warehouses</li>
+          </ul>
+        </div>
+        <div class="crop-card">
+            <h2>🐛12. Pest and Disease Management</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+              <tr>
+                <th>Pest / Disease</th>
+                <th>Symptoms</th>
+                <th>Control Measures</th>
+              </tr>
+              <tr>
+                <td>Bollworm</td>
+                <td>Damaged bolls, shedding of squares</td>
+                <td>BT cotton, pheromone traps, insecticides</td>
+              </tr>
+              <tr>
+                <td>Whitefly</td>
+                <td>Sticky honeydew on leaves, yellowing</td>
+                <td>Neem oil spray, imidacloprid</td>
+              </tr>
+              <tr>
+                <td>Jassids</td>
+                <td>Leaf curling, yellowing margins</td>
+                <td>Spray acetamiprid or neem extracts</td>
+              </tr>
+              <tr>
+                <td>Root Rot</td>
+                <td>Wilting, blackened roots</td>
+                <td>Soil treatment with Trichoderma</td>
+              </tr>
+              <tr>
+                <td>Leaf Spot</td>
+                <td>Brown spots on foliage</td>
+                <td>Copper fungicides, proper spacing</td>
+              </tr>
+            </table>
+          </div>
+          
+        <div class="crop-card">
+          <img src="https://www.coromandel.biz/wp-content/uploads/2025/02/c-2.png" alt="Profitability" />
+          <h2>💸 13. Yield & Profitability</h2>
+          <ul>
+            <li><strong>Average Yield:</strong> 1.5 to 4 tons/ha (lint)</li>
+            <li><strong>Major Costs:</strong> Seeds, fertilizers, labor, pest control</li>
+            <li><strong>Profit:</strong> High with proper pest management and hybrid seeds</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQwinI6VrG7n69AcL0zkYVvwzDVfEXz68WzA&s" alt="Sustainable Practices" />
+          <h2>🌱 14. Sustainable & Modern Practices</h2>
+          <ul>
+            <li>Organic farming for premium markets</li>
+            <li>Use of bio-fertilizers and IPM</li>
+            <li>Drone-based spraying and monitoring</li>
+            <li>Soil moisture sensors for optimized irrigation</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4U1773Z8bKM0wKK4ztEjSLEBuzpDMIOFvXA&s" alt="Tips for Beginners" />
+          <h2>✅ 15. Tips for Beginners</h2>
+          <ul>
+            <li>Choose varieties suited for your region</li>
+            <li>Test soil and plan fertilization accordingly</li>
+            <li>Scout regularly for pests and diseases</li>
+            <li>Join local farming groups or training programs</li>
+          </ul>
+        </div>
+      
+        <div class="crop-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPMR2U6KGz8pOnBhJjqf3Lic4idwXlvwCSbw&s" alt="Visual Content" />
+          <h2>📷 16. Visual Content</h2>
+          <ul>
+            <li>Infographics: Cotton growth stages, pest life cycles</li>
+            <li>Videos: Ginning process, sowing to harvesting</li>
+            <li>Photos: Cotton varieties, farm setups, tools</li>
+          </ul>
+        </div>
+
+        <div class="crop-card">
+            <h2>💸 17. Economics / Profitability</h2>
+            <table border="1" cellspacing="0" cellpadding="10">
+              <tr>
+                <th>Input</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <td>Seed Cost</td>
+                <td>₹2,000 – ₹3,000 per acre (BT/Hybrid varieties)</td>
+              </tr>
+              <tr>
+                <td>Fertilizer & Pesticides</td>
+                <td>₹5,000 – ₹8,000 per acre</td>
+              </tr>
+              <tr>
+                <td>Labor Cost</td>
+                <td>₹6,000 – ₹10,000 per acre</td>
+              </tr>
+              <tr>
+                <td>Miscellaneous</td>
+                <td>₹2,000 – ₹3,000 (Irrigation, transport)</td>
+              </tr>
+              <tr>
+                <td>Total Cost of Cultivation</td>
+                <td>₹15,000 – ₹24,000 per acre</td>
+              </tr>
+              <tr>
+                <td>Average Yield</td>
+                <td>10 – 20 quintals/acre (lint cotton)</td>
+              </tr>
+              <tr>
+                <td>Market Price</td>
+                <td>₹6,000 – ₹8,000 per quintal</td>
+              </tr>
+              <tr>
+                <td>Net Profit</td>
+                <td>₹20,000 – ₹50,000 per acre (varies by region & pest control)</td>
+              </tr>
+            </table>
+          </div>
+          
+      
+      </div>
+      
+  </main>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

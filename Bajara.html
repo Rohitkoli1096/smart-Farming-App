@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+  color: #1b3e20;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+main h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 24px 0;
+  color: #2e7d32;
+}
+
+.search-box {
+  display: block;
+  width: 90%;
+  margin: 0 auto 24px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.crop-guide {
+  padding: 16px;
+  display: grid;
+  gap: 24px;
+}
+
+.crop-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.crop-card:hover {
+  transform: translateY(-5px);
+}
+
+.crop-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.crop-card h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #1a3e2c;
+}
+
+.crop-card p,
+.crop-card ul,
+.crop-card table {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.crop-card ul {
+  padding-left: 18px;
+}
+
+.crop-card ul li {
+  margin-bottom: 6px;
+}
+
+.crop-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.crop-card table th,
+.crop-card table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 20%;
+  text-align: left;
+}
+
+.crop-card a {
+  color: #2e7d32;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .crop-guide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1>Rice Farming Guide</h1>
+    <input type="text" placeholder="Search crops..." class="search-box" />
+
+
+    <div class="crop-guide">
+
+      <div class="crop-card">
+        <img src="https://thumbs.dreamstime.com/b/bajara-millet-crop-blue-sky-flowering-close-up-view-196170008.jpg" alt="Bajara Introduction" />
+        <h2>1. Introduction to Bajra Farming</h2>
+        <p>Bajra, or Pearl Millet, is a drought-resistant cereal crop grown in arid and semi-arid regions. It is a staple food for millions and is rich in iron, fiber, and protein. Bajra is used for human consumption, fodder, and in alcoholic beverages.</p>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-Pqf_DZ4r9xhaGCFWGs3_iIFqxb_nZGu2g&s" alt="Bajara Introduction" />
+        <h2>2. Suitable Climate and Soil</h2>
+        <h3>Climate:</h3>
+        <ul>
+          <li>Highly drought-tolerant; thrives in arid and semi-arid climates.</li>
+          <li>Ideal temperature: 25°C to 35°C.</li>
+          <li>Low rainfall requirement: 300-500 mm annually.</li>
+        </ul>
+        <h3>Soil:</h3>
+        <ul>
+          <li>Well-drained sandy loam or loamy soils preferred.</li>
+          <li>Tolerates poor, saline, and alkaline soils.</li>
+          <li>pH: 6.0 to 7.5 for best results.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQBJiaDQEiV9k3_D2PdPEPWZJZlMQNoCpirA&s" alt="Bajara Introduction" />
+        <h2>3. Sowing Season</h2>
+        <table>
+          <thead>
+            <tr><th>Region</th><th>Sowing Time</th><th>Harvesting Time</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Kharif Season</td><td>June to July</td><td>October to November</td></tr>
+            <tr><td>Rabi Season (limited areas)</td><td>October to November</td><td>January to February</td></tr>
+            <tr><td>Summer Season</td><td>February to March</td><td>May to June</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSae-o0vS8RQd4XzrFS4jWaqhSaHX9YSFu1mw&s" alt="Introduction" />
+        <h2>4. Land Preparation</h2>
+        <ul>
+          <li>Ploughing 2–3 times to make a fine tilth.</li>
+          <li>Remove weeds and previous crop residues.</li>
+          <li>Add well-decomposed FYM or compost.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5VVnC3DdhGxv4RyOdxoUG38VGc5-hdqpU3Q&s" alt="Bajara Introduction" />
+        <h2>5. Seed Selection and Treatment</h2>
+        <ul>
+          <li>Use high-yielding, disease-resistant hybrid varieties.</li>
+          <li>Seed rate: 4–5 kg per hectare.</li>
+          <li>Seed treatment with Thiram or Bavistin to prevent fungal infections.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZt2LY-qvLeGDEvYW1Eg4PFFChji_yBVJ-0A&s" alt="Bajara Introduction" />
+        <h2>6. Sowing Methods</h2>
+        <ul>
+          <li>Line sowing or broadcasting methods used.</li>
+          <li>Row spacing: 45 cm; Plant spacing: 10–15 cm.</li>
+          <li>Sowing depth: 2–3 cm.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://www.shutterstock.com/image-photo/water-flowing-irrigation-pipe-indian-260nw-1573240636.jpg" alt="Bajara Introduction" />
+        <h2>7. Irrigation Requirements</h2>
+        <ul>
+          <li>Minimal irrigation required; usually rainfed.</li>
+          <li>One or two supplemental irrigations if needed during flowering and grain filling.</li>
+          <li>Avoid waterlogging.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://www.indiablooms.com/storage/assets/n/2023/d14f945b270b1377b06290a04ac17fc9.jpg" alt="Bajara Introduction" />
+        <h2>8. Fertilizer Management</h2>
+        <table>
+          <thead>
+            <tr><th>Nutrient</th><th>Quantity (kg/ha)</th><th>Application Time</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nitrogen (N)</td><td>60</td><td>Split dose (half basal, half after 30 days)</td></tr>
+            <tr><td>Phosphorus (P)</td><td>30</td><td>Basal dose</td></tr>
+            <tr><td>Potassium (K)</td><td>20</td><td>Basal dose</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://blog.agribegri.com/public/blog_images/smut-disease-of-bajra-symptoms-and-management-600x400.png" alt="Bajara Introduction" />
+        <h2>9. Pest and Disease Management</h2>
+        <table>
+          <thead>
+            <tr><th>Pest/Disease</th><th>Symptoms</th><th>Control Measures</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Downy Mildew</td>
+              <td>White growth on leaves, stunted growth</td>
+              <td>Fungicide spray (Metalaxyl) and resistant varieties</td>
+            </tr>
+            <tr>
+              <td>Smut</td>
+              <td>Black powdery spores on ear heads</td>
+              <td>Seed treatment + crop rotation</td>
+            </tr>
+            <tr>
+              <td>Shoot Fly</td>
+              <td>Dead hearts in young plants</td>
+              <td>Systemic insecticides during early stages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="crop-card">
+        <img src="data:image/jpeg;base64,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" alt="Bajara Introduction" />
+        <h2>10. Harvesting</h2>
+        <ul>
+          <li>Harvest when grains are hard and dry.</li>
+          <li>Usually ready in 75–90 days depending on variety.</li>
+          <li>Manual cutting or sickles used.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://www.shutterstock.com/shutterstock/videos/1097982699/thumb/1.jpg?ip=x480" alt="Bajara Introduction" />
+        <h2>11. Post-Harvest Management</h2>
+        <ul>
+          <li>Dry ear heads in sun to reduce grain moisture to 12–13%.</li>
+          <li>Thresh manually or by mechanical threshers.</li>
+          <li>Store in airtight containers or bags in dry, cool places.</li>
+        </ul>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvrsZPgwM3TMVd-Qm8QmkWl6RYIkfuvmwNhg&s" alt="Bajara Introduction" />
+        <h2>12. Yield</h2>
+        <p>Hybrid bajra varieties yield 25–35 quintals/ha; traditional varieties yield 15–20 quintals/ha.</p>
+      </div>
+  
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS56KijoSDnPSmIUnBpLOUvifP9BllfZ4E0aQ&s" alt="Bajara Introduction" />
+        <h2>13. Economics / Profitability</h2>
+        <table>
+          <thead>
+            <tr><th>Input</th><th>Estimated Cost (₹/ha)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Seeds</td><td>1,500 – 2,000</td></tr>
+            <tr><td>Fertilizers & Chemicals</td><td>2,000 – 3,500</td></tr>
+            <tr><td>Irrigation</td><td>1,000 – 2,000</td></tr>
+            <tr><td>Labor</td><td>3,500 – 5,000</td></tr>
+            <tr><td><strong>Total Cost</strong></td><td><strong>₹8,000 – ₹12,500</strong></td></tr>
+            <tr><td>Gross Return</td><td>₹25,000 – ₹40,000</td></tr>
+            <tr><td><strong>Net Profit</strong></td><td><strong>₹15,000 – ₹28,000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </main>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Onboarding</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      background-color: #b2d8ff;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo img {
+      height: 30px;
+    }
+
+    .logo strong {
+      color: #003399;
+    }
+
+    .header-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .header-btn {
+      background-color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+    }
+
+    .carousel {
+      flex-grow: 1;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      scroll-snap-align: start;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .slide h2 {
+      color: #003399;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .slide p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+}
+
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
+
+    .dot.active {
+      background-color: #003399;
+    }
+
+    .login-btn {
+      text-align: center;
+      background-color: #003399;
+      color: white;
+      padding: 15px;
+      font-size: 18px;
+      font-style: italic;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets\images\logo.png" alt="Logo" />
+    </div>
+    <div class="header-btns">
+      <div class="header-btn">📞 Help</div>
+      <div class="header-btn">🌐 Eng</div>
+    </div>
+  </header>
+
+  <div class="carousel" id="carousel">
+    <div class="slide">
+      <h2>Stay Connected</h2>
+      <p>Get best agriculture techniques<br>Connect with Agri Experts & Farmers</p>
+      <img src="https://thumbs.dreamstime.com/b/happy-farmer-holds-wicker-basket-full-fresh-vegetables-farm-harvest-agriculture-concept-sketch-vector-118560982.jpg" alt="Slide 1"/>
+    </div>
+    <div class="slide">
+      <h2>Get Latest Updates</h2>
+      <p>Get weather updates, mandi prices &<br>other agriculture news at one place</p>
+      <img src="https://img.freepik.com/premium-vector/aioptimized-crop-yield-prediction-abstract-concept-vector-illustration-agriculture-forecast-crop_107173-97373.jpg?semt=ais_hybrid&w=740" alt="Slide 2"/>
+    </div>
+  </div>
+
+  <div class="dots" id="dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+  </div>
+
+  <div class="login-btn" onclick="window.location.href='stateSelect.html'"> Continue</div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = dots.length;
+    let currentIndex = 0;
+
+    function updateDots(index) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function goToSlide(index) {
+      const width = carousel.clientWidth;
+      carousel.scrollTo({ left: index * width, behavior: 'smooth' });
+      updateDots(index);
+    }
+
+    function autoSwipe() {
+      if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        goToSlide(currentIndex);
+      }
+    }
+
+    carousel.addEventListener('scroll', () => {
+      const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
+      currentIndex = index;
+      updateDots(index);
+    });
+
+    setInterval(autoSwipe, 3000);
+  </script>
+
+</body>
+</html>

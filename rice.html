@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+  color: #1b3e20;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+main h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 24px 0;
+  color: #2e7d32;
+}
+
+.search-box {
+  display: block;
+  width: 90%;
+  margin: 0 auto 24px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.crop-guide {
+  padding: 16px;
+  display: grid;
+  gap: 24px;
+}
+
+.crop-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.crop-card:hover {
+  transform: translateY(-5px);
+}
+
+.crop-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.crop-card h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #1a3e2c;
+}
+
+.crop-card p,
+.crop-card ul,
+.crop-card table {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.crop-card ul {
+  padding-left: 18px;
+}
+
+.crop-card ul li {
+  margin-bottom: 6px;
+}
+
+.crop-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.crop-card table th,
+.crop-card table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.crop-card a {
+  color: #2e7d32;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .crop-guide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1>Rice Farming Guide</h1>
+    <input type="text" placeholder="Search crops..." class="search-box" />
+
+
+    <div class="crop-guide">
+      <div class="crop-card">
+       
+        <h2>📌 Introduction</h2>
+         <img src="https://eos.com/wp-content/uploads/2023/04/rice-field.jpg" />
+        <p>Rice is a staple food for more than half of the world’s population. It is primarily grown in Asia and thrives in warm, moist environments. Rice farming is both an art and a science, requiring knowledge of soil, water, seeds, pests, and proper harvesting techniques.</p>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://cdn.shopaccino.com/refresh/images/rice---white---black---brown-02-9704368392133871.jpg" alt="Types of Rice" />
+        <h2>🧬 1. Types of Rice</h2>
+        <h4>🍚 Based on Grain Size:</h4>
+        <ul>
+          <li>Short-grain: Sticky rice (e.g., sushi rice)</li>
+          <li>Medium-grain: Tender and moist (e.g., Arborio)</li>
+          <li>Long-grain: Fluffy and dry (e.g., Basmati, Jasmine)</li>
+        </ul>
+        <h4>🌱 Based on Cultivation:</h4>
+        <ul>
+          <li>Upland rice: Grown without flooding (rainfed)</li>
+          <li>Lowland rice: Grown in flooded fields (paddy rice)</li>
+        </ul>
+      </div>
+ 
+      <div class="crop-card">
+        <img src="https://img.freepik.com/free-photo/smart-farming-with-agriculture-iot_53876-124634.jpg" alt="Climate" />
+        <h2>🌍 2. Suitable Climate & Conditions</h2>
+        <h4>☀️ Climate</h4>
+        <ul>
+          <li>Temperature: 20°C to 38°C</li>
+          <li>Rainfall: 100–200 cm annually</li>
+          <li>Sunlight: Full sun (6–8 hours daily)</li>
+        </ul>
+        <h4>🌾 Soil</h4>
+        <ul>
+          <li>Loamy, silty or clayey soil</li>
+          <li>pH: 5.5 to 7.0 (neutral to slightly acidic)</li>
+          <li>Good water retention capacity</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://png.pngtree.com/thumb_back/fh260/background/20240610/pngtree-concept-use-of-the-smart-farmer-system-came-to-help-analysis-image_15746624.jpg" alt="Farming Methods" />
+        <h2>🌱 3. Rice Farming Methods</h2>
+        <ul>
+          <li><strong>Traditional Method (Manual):</strong> Land is ploughed by bullocks or tractors. Seeds are manually sown and transplanted.</li>
+          <li><strong>SRI:</strong> Uses less water and seed. Widely adopted for higher yields.</li>
+          <li><strong>Direct Seeding:</strong> Seeds sown directly into fields. Saves labor but requires precise weed control.</li>
+          <li><strong>Transplantation:</strong> Seeds are sown in nurseries then transplanted into flooded fields.</li>
+        </ul>
+      </div>
+
+      <div class="crop-card">
+        <img src="https://www.shutterstock.com/shutterstock/videos/3522733817/thumb/1.jpg?ip=x480" alt="Land Preparation" />
+        <h2>🧪 4. Land Preparation</h2>
+        <ul>
+          <li><strong>Ploughing:</strong> To loosen the soil.</li>
+          <li><strong>Levelling:</strong> For uniform water distribution.</li>
+          <li><strong>Watering:</strong> Field is flooded before planting.</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://i.ytimg.com/vi/Z4ak5y7hBUQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCcWqZOm8SFuDmvcRbd4dVdcn-gZg" alt="Seed Selection" />
+        <h2>🌾 5. Seed Selection and Sowing</h2>
+        <p><strong>Seed Selection:</strong> Choose high-yielding, disease-resistant, and climate-suitable varieties.</p>
+        <p><strong>Common Varieties:</strong> Basmati, IR64, MTU-1010, Jasmine, Japonica</p>
+        <p><strong>Seed Treatment:</strong> Soak in water for 12–24 hours. Treat with fungicides like Carbendazim.</p>
+      </div>
+ 
+      <div class="crop-card">
+        <img src="https://kubota.com.mm/en/products/transplanter/images/img_overview.jpg" alt="Transplanting" />
+        <h2>🚜 6. Transplanting</h2>
+        <ul>
+          <li>Age of Seedlings: 20–30 days</li>
+          <li>Spacing: 20x20 cm for proper aeration and sunlight</li>
+          <li>Water Level: Maintain 3–5 cm of water during transplantation</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://cdn.open-pr.com/T/5/T506972119_g.jpg" alt="Irrigation" />
+        <h2>💧 7. Irrigation</h2>
+        <ul>
+          <li>Continuous flooding early and mid-growth</li>
+          <li>Drain water 10–15 days before harvesting</li>
+          <li>Use AWD (Alternate Wetting and Drying) to save water</li>
+        </ul>
+      </div>
+
+      <div class="crop-card">
+        <h2>📅 8. Sowing Season by Region</h2>
+        <table border="1" cellspacing="0" cellpadding="10">
+          <tr>
+            <th>Region</th>
+            <th>Sowing Time</th>
+            <th>Harvest Time</th>
+          </tr>
+          <tr>
+            <td>Northern India (Punjab, UP, Bihar)</td>
+            <td>June – July (Kharif)</td>
+            <td>October – November</td>
+          </tr>
+          <tr>
+            <td>Southern India (Tamil Nadu, Kerala)</td>
+            <td>June – August (main), Jan – Feb (rabi)</td>
+            <td>November – December, April – May</td>
+          </tr>
+          <tr>
+            <td>Eastern India (West Bengal, Assam)</td>
+            <td>May – July</td>
+            <td>October – December</td>
+          </tr>
+          <tr>
+            <td>Western India (Gujarat, Maharashtra)</td>
+            <td>June – July</td>
+            <td>October – December</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2666517425000562-gr1.jpg" alt="Weed and Pest" />
+        <h2>🌿 9. Weed and Pest Management</h2>
+        <ul>
+          <li><strong>Weed Control:</strong> Manual weeding, mechanical weeders, herbicides like Butachlor</li>
+          <li><strong>Common Pests:</strong> Stem borers, Leaf folders, Brown planthoppers</li>
+          <li><strong>Control:</strong> IPM, biological controls (ducks, neem), chemical pesticides as last resort</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <h2>🌿 10. Fertilizer Management</h2>
+        <table border="1" cellspacing="0" cellpadding="10">
+          <tr>
+            <th>Fertilizer Type</th>
+            <th>Quantity per Hectare</th>
+            <th>Application Time</th>
+          </tr>
+          <tr>
+            <td>Nitrogen (N)</td>
+            <td>80–100 kg</td>
+            <td>Split: Basal + tillering + panicle initiation</td>
+          </tr>
+          <tr>
+            <td>Phosphorus (P<sub>2</sub>O<sub>5</sub>)</td>
+            <td>40–60 kg</td>
+            <td>Entire dose as basal during transplanting</td>
+          </tr>
+          <tr>
+            <td>Potassium (K<sub>2</sub>O)</td>
+            <td>40–60 kg</td>
+            <td>Split between basal and tillering stage</td>
+          </tr>
+          <tr>
+            <td>Micronutrients (Zinc, Iron)</td>
+            <td>As per soil test (e.g., Zinc sulfate 25kg/ha)</td>
+            <td>Soil application at transplanting</td>
+          </tr>
+        </table>
+      </div>
+      
+   
+      <div class="crop-card">
+        <img src="https://media.gettyimages.com/id/1256012711/photo/ready-to-move-to-a-new-home.jpg?s=612x612&w=gi&k=20&c=302EWlCCwdpRbCo-NgiF2eGN7FL_feaIbvJkOVAub84=" alt="Growth Stages" />
+        <h2>🌾 11. Growth Stages of Rice</h2>
+        <ul>
+          <li>Germination</li>
+          <li>Seedling</li>
+          <li>Tillering</li>
+          <li>Panicle initiation</li>
+          <li>Flowering</li>
+          <li>Maturity</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLrkDxACrvkSTLMZ2WqWIJFs5EkQmUF5U6NA&s" alt="Harvesting" />
+        <h2>🔪 12. Harvesting</h2>
+        <ul>
+          <li><strong>Signs:</strong> Grains turn golden yellow, 20–25% moisture content</li>
+          <li><strong>Methods:</strong> Manual (sickles), Mechanical harvesters</li>
+        </ul>
+      </div>
+ 
+      <div class="crop-card">
+        <img src="https://img-cdn.krishijagran.com/55349/modern-harvesting-machines.jpg" alt="Post Harvest" />
+        <h2>🏭 13. Post-Harvest Processing</h2>
+        <ul>
+          <li>Threshing: Separate grain from stalk</li>
+          <li>Drying: Reduce moisture to 12–14%</li>
+          <li>Milling: Remove husk and bran</li>
+          <li>Storage: Use airtight containers or silos</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgPEvTg5Nt7TeUQnGmhH7ACSRo3RDSiRIhW5ijlYz_BkSkhhWMtoZsW2glwMIQaDZ83_c&usqp=CAU" alt="Profitability" />
+        <h2>💸 14. Yield & Profitability</h2>
+        <ul>
+          <li>Average yield: 2–5 tons/hectare</li>
+          <li>Cost factors: Labor, seeds, water, fertilizers</li>
+          <li>Profit: Higher with mechanization and good management</li>
+        </ul>
+      </div>
+
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSPgq1kH9GzVNqFQXIGDwyZqiQwwZrVxJsTA&s" alt="Sustainable Practices" />
+        <h2>🌱 15. Sustainable & Modern Practices</h2>
+        <ul>
+          <li>Use of Drones for spraying/monitoring</li>
+          <li>Soil Testing Kits</li>
+          <li>Organic Rice Farming</li>
+          <li>Agri Apps for tracking</li>
+          <li>Water-saving techniques like AWD & laser leveling</li>
+        </ul>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY-0Mn_RUlFLg6ALGH7UJXDYY-HEMQqe-GQ&s" alt="Tips for Beginners" />
+        <h2>✅ 16. Tips for Beginners</h2>
+        <ul>
+          <li>Test soil before planting</li>
+          <li>Start small to learn the cycle</li>
+          <li>Keep records</li>
+          <li>Attend training/workshops</li>
+        </ul>
+      </div>
+      <div class="crop-card">
+        <h2>💸 Economics / Profitability</h2>
+        <table border="1" cellspacing="0" cellpadding="10">
+          <tr>
+            <th>Input</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Seed Cost</td>
+            <td>₹1,000 – ₹1,500 per acre (HYV/Hybrid)</td>
+          </tr>
+          <tr>
+            <td>Fertilizer & Pesticides</td>
+            <td>₹3,000 – ₹5,000 per acre</td>
+          </tr>
+          <tr>
+            <td>Labor Cost</td>
+            <td>₹5,000 – ₹8,000 per acre</td>
+          </tr>
+          <tr>
+            <td>Miscellaneous</td>
+            <td>₹2,000 – ₹3,000 (irrigation, machinery)</td>
+          </tr>
+          <tr>
+            <td>Total Cost of Cultivation</td>
+            <td>₹12,000 – ₹18,000 per acre</td>
+          </tr>
+          <tr>
+            <td>Average Yield</td>
+            <td>20 – 25 quintals/acre (paddy)</td>
+          </tr>
+          <tr>
+            <td>Market Price</td>
+            <td>₹1,800 – ₹2,200 per quintal</td>
+          </tr>
+          <tr>
+            <td>Net Profit</td>
+            <td>₹10,000 – ₹30,000 per acre (depends on irrigation and seed variety)</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="crop-card">
+        <img src="https://media.istockphoto.com/id/1178095816/photo/farmers-farming-on-rice-terraces-ban-pa-bong-piang-northern-region-in-mae-chaem-district.jpg?s=612x612&w=0&k=20&c=rWqXSgtro-n2suFFbVETWlJMdLYL0GIK_czggly5OEI=" alt="Visual Content" />
+        <h2>📷 17. Visual Content</h2>
+        <ul>
+          <li>Infographics: Rice life cycle, irrigation layout</li>
+          <li>Videos: Step-by-step transplanting, pest control</li>
+          <li>Photo Galleries: Rice varieties, farming tools</li>
+        </ul>
+      </div>
+      
+    </div>
+  </main>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

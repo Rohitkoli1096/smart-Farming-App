@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select State</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f4f7fc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #b2d8ff;
+      padding: 15px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #003399;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .state-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .state-card:hover {
+      transform: scale(1.02);
+    }
+
+    .state-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .state-card p {
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      color: #003366;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #003399;
+      color: white;
+      font-size: 16px;
+      font-style: italic;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      cursor: pointer;
+    }
+    header {
+  background-color: #b2d8ff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 32px;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+.btns button {
+  background-color: white;
+  color: #003399;
+  border: 1px solid #ccc;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btns button:hover {
+  background-color: #e1ecff;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets\images\logo.png" alt="Logo">
+    </div>
+    <div class="btns">
+      <button>🔗 Help</button>
+      <button>🌐 Eng</button>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="grid" id="stateGrid"></div>
+  </div>
+
+  <div class="footer" onclick="goNext()">Continue</div>
+
+  <script>
+    const states = [
+      { name: "Maharashtra", image: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Seal_of_Maharashtra.svg" },
+      { name: "Punjab", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Seal_of_the_Government_Of_Punjab_%28Black_On_White%29.svg/1200px-Seal_of_the_Government_Of_Punjab_%28Black_On_White%29.svg.png" },
+      { name: "Gujarat", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN3DO6_TP5bQmxKmVTGWs6d_D6E7XDXz8kfpgtdSg8EgNuDfNWEnsk2vsSM8pfVaE-W-Q&usqp=CAU" },
+      { name: "Karnataka", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq-DByllDhxBq2XneFDVSRmklFnfVlOYRCdQ&s" },
+      { name: "Uttar Pradesh", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgZdXVC-eUUFMVDODTKkcrDd_QJZpdRXWfEg&s"},
+      { name: "Madhya Pradesh", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUYgFm8JsX5NqtGI4rhmK1K_evP5GdU5kCmg&s"}
+    ];
+
+    const grid = document.getElementById("stateGrid");
+    let selectedState = null;
+
+    states.forEach(state => {
+      const card = document.createElement("div");
+      card.className = "state-card";
+      card.innerHTML = `
+        <img src="${state.image}" alt="${state.name}" />
+        <p>${state.name}</p>
+      `;
+      card.onclick = () => {
+        selectedState = state;
+        localStorage.setItem("selectedStateName", state.name);
+        localStorage.setItem("selectedStateImage", state.image);
+        document.querySelectorAll('.state-card').forEach(c => c.style.border = "none");
+        card.style.border = "3px solid #003399";
+      };
+      grid.appendChild(card);
+    });
+
+    function goNext() {
+      if (!selectedState) {
+        alert("Please select a state.");
+        return;
+      }
+      window.location.href = "complete-address.html";
+    }
+  </script>
+
+</body>
+</html>

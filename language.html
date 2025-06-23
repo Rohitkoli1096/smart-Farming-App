@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Language Selection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #b2d8ff, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: #4b4b4b;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    .language-selection {
+      text-align: center;
+    }
+
+    .language-selection h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #1a2d66;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .lang-btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 2px solid #ccc;
+      width: 200px;
+      text-align: center;
+      font-size: 18px;
+      background-color: white;
+      color: #1a2d66;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .lang-btn.selected {
+      background-color: #e8f5e9;
+      border: 2px solid green;
+      color: green;
+      font-weight: bold;
+    }
+
+    .continue-btn {
+      width: 100%;
+      background-color: #ccc;
+      color: #fff;
+      font-size: 18px;
+      padding: 15px;
+      text-align: center;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      font-style: italic;
+      cursor: not-allowed;
+      transition: 0.3s;
+    }
+
+    .continue-btn.active {
+      background-color: #133ccf;
+      cursor: pointer;
+    }
+
+    @media (max-width: 500px) {
+      .lang-btn {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src=".\assets\images\logo.png" alt="Gramophone Logo" />
+    <p>TRANSFORMING AGRICULTURE US</p>
+  </div>
+
+  <div class="language-selection">
+    <h2>Select your Language</h2>
+    <div class="buttons">
+      <div class="lang-btn" onclick="selectLang(this, 'hindi')">हिंदी<br><small>Hindi</small></div>
+      <div class="lang-btn" onclick="selectLang(this, 'english')">English<br><small>English</small></div>
+      <div class="lang-btn" onclick="selectLang(this, 'marathi')">मराठी<br><small>Marathi</small></div>
+    </div>
+  </div>
+
+  <div class="continue-btn" id="continueBtn">
+    Continue
+  </div>
+
+  <script>
+    let selectedLang = null;
+
+    function selectLang(el, lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedLang = lang;
+
+      const continueBtn = document.getElementById('continueBtn');
+      continueBtn.classList.add('active');
+      continueBtn.style.pointerEvents = "auto";
+    }
+
+    document.getElementById('continueBtn').addEventListener('click', function () {
+      if (!selectedLang) return;
+
+      // Redirect based on selected language
+      if (selectedLang === 'hindi') {
+        alert(`${selectedLang} is not available Continue English`);
+         window.location.href = "secondpage.html";
+      } else if (selectedLang === 'english') {
+        window.location.href = "secondpage.html";
+      } else if (selectedLang === 'marathi') {
+        alert(`${selectedLang} is not available Continue English`);
+          window.location.href = "secondpage.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

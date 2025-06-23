@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Find your footware</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+    .scheme-card {
+      background: #f9fbe7;
+      border-left: 4px solid #66bb6a;
+      border-radius: 10px;
+      padding: 1rem;
+      transition: transform 0.2s;
+      width: 100%;
+    }
+
+    .scheme-card:hover {
+      transform: scale(1.02);
+    }
+
+    .scheme-card h3 {
+      color: #33691e;
+      margin-bottom: 0.5rem;
+    }
+
+    .scheme-card p,
+    .scheme-card ul {
+      font-size: 0.95rem;
+      color: #4e342e;
+    }
+
+    .learn-more {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #1b5e20;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    main table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+main th,
+main td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  width: 10%;
+
+}
+
+main th {
+  background-color: #a5d6a7;
+  color: #2e7d32;
+}
+
+main tr:nth-child(even) {
+  background-color: #f1f8e9;
+}
+
+main tr:hover {
+  background-color: #dcedc8;
+}
+
+.search-box {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 1.5rem;
+      font-style: bold;
+      border: 2px solid #e0d9cd;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    .image-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 1.5rem;
+      gap: 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .accordion-item {
+      text-align: center;
+      flex: 0 0 auto;
+      width: 90px;
+    }
+
+    .accordion-image {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #66bb6a;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-image:hover {
+      transform: scale(1.1);
+    }
+
+    .accordion-label {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 1rem;
+      margin-top: 0;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .accordion-content.active {
+      display: block;
+    }
+
+
+  </style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+    
+<h4>Select Problem</h4>
+<div class="image-grid">
+    <div class="accordion-item" onclick="showContent('yellowing')">
+      <img src="https://img.freepik.com/free-vector/autumn-yellow-maple-leaf-leaves-vector-illustration-eps10_87521-3416.jpg?semt=ais_hybrid&w=740" alt="Yellowing Leaves" class="accordion-image">
+      <div class="accordion-label">Yellowing leaves</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('roots')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa5dT5Yvzze84OOsfPU4KXY5XywqXWtuC4tA&s" alt="Poor Root Development" class="accordion-image">
+      <div class="accordion-label">Poor root development</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('stems')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt0Z-Ck7ww4Kq5_cxK9Ls8xgED5Pym5huEPg&s" alt="Weak Stems" class="accordion-image">
+      <div class="accordion-label">Weak stems</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('pale')">
+      <img src="https://media.istockphoto.com/id/186822411/photo/high-resolution-isolated-autumn-dry-maple-leaf.jpg?s=612x612&w=0&k=20&c=SGIrsTco6wBn_vjr5one8ySy2VsjOFfyodkOsMRARgA=" alt="Pale Leaves" class="accordion-image">
+      <div class="accordion-label">Pale, dry leaves</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('dropping')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_3kUiI-ODP43vzXtnnqVRyyJTyAryuEhZxw&s" alt="Fruit Drop" class="accordion-image">
+      <div class="accordion-label">Fruit dropping early</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('spots')">
+      <img src="https://www.shutterstock.com/image-vector/leaf-mold-isolated-on-white-260nw-2073712088.jpg" alt="Leaf Spots" class="accordion-image">
+      <div class="accordion-label">Leaf spots/tips</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('general')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0iEvmsVNerT3MJfAk8QZCeuRY1pGqbsfbqA&s" alt="Poor Growth" class="accordion-image">
+      <div class="accordion-label">General poor growth</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('acidic')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzkibewvEYI2IQbZBF32e0Ri8Xd-iiReeQLg&s" alt="Acidic Soil" class="accordion-image">
+      <div class="accordion-label">Soil too acidic</div>
+    </div>
+    <div class="accordion-item" onclick="showContent('alkaline')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCq5076VCJ3TVrT3WGf4fLe_VFAa9CVIwA1g&s" alt="Alkaline Soil" class="accordion-image">
+      <div class="accordion-label">Soil too alkaline</div>
+    </div>
+  </div>
+
+  <div class="accordion-content" id="yellowing">
+    <div class="scheme-card">
+      <h3>1. Urea (Nitrogen Fertilizer)</h3>
+      <p><strong>Description:</strong> Urea is a high-nitrogen fertilizer commonly used to correct nitrogen deficiencies, which often cause yellowing of older leaves.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Granular Form: Apply 45–50 kg per acre during the early vegetative stage.</li>
+        <li>Foliar Spray: Mix 1–2% solution and spray early morning or evening.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Promotes lush green growth and enhances overall plant health.</p>
+      <a href="https://en.wikipedia.org/wiki/Urea" target="_blank" class="learn-more">Learn more</a>
+    </div>    <br>
+    
+    <div class="scheme-card">
+      <h3>2. Ammonium Sulfate</h3>
+      <p><strong>Description:</strong> Provides both nitrogen and sulfur, addressing deficiencies that lead to yellowing leaves.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Use 40–60 kg per acre, depending on crop needs.</li>
+        <li>Apply during the vegetative stage for optimal results.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Improves soil acidity, benefiting plants that prefer slightly acidic conditions.</p>
+      <a href="https://www.iclfertilizers.com/Products/Nitrogen/Ammonium-Sulfate" target="_blank" class="learn-more">Learn more</a>
+    </div>    <br>
+    
+    <div class="scheme-card">
+      <h3>3. Calcium Ammonium Nitrate (CAN)</h3>
+      <p><strong>Description:</strong> A balanced fertilizer containing nitrogen and calcium, supporting leaf and stem health.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Apply around 75 kg per acre in moist soil.</li>
+        <li>Suitable for crops in all growth stages.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Enhances nitrogen use efficiency and strengthens plant cell walls.</p>
+      <a href="https://en.wikipedia.org/wiki/Calcium_ammonium_nitrate" target="_blank" class="learn-more">Learn more</a>
+    </div>
+    <br>
+
+    <div class="scheme-card">
+      <h3>4. Liquid Nitrogen (Foliar Spray)</h3>
+      <p><strong>Description:</strong> A quick-acting nitrogen solution sprayed directly on leaves to correct yellowing rapidly.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Mix 1–2% solution and spray early morning or evening.</li>
+        <li>Repeat application every 7–10 days if necessary.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Provides immediate relief to nitrogen-deficient plants.</p>
+      <a href="https://www.agriculture.com/crops/fertilizers/nitrogen" target="_blank" class="learn-more">Learn more</a>
+    </div><br>
+    
+    <div class="scheme-card">
+      <h3>5. Nano Urea (IFFCO)</h3>
+      <p><strong>Description:</strong> An eco-friendly, highly efficient nitrogen fertilizer. One bottle replaces one full bag of urea.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Use as foliar spray – 2–4 ml per liter of water.</li>
+        <li>Apply during early morning or late evening.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Reduces nitrogen wastage and improves leaf color quickly.</p>
+      <a href="https://www.iffco.in/en/corporate/nano-urea" target="_blank" class="learn-more">Learn more</a>
+    </div>    <br>
+    
+    <div class="scheme-card">
+      <h3>6. Blood Meal (Organic Nitrogen Source)</h3>
+      <p><strong>Description:</strong> High in nitrogen, this organic fertilizer helps restore green color to yellowing leaves naturally.</p>
+      <p><strong>Application:</strong></p>
+      <ul>
+        <li>Apply 3–5 kg per acre, mix with topsoil or compost.</li>
+        <li>Suitable for organic farming practices.</li>
+      </ul>
+      <p><strong>Benefits:</strong> Improves nitrogen levels without chemical residue.</p>
+      <a href="https://www.planetnatural.com/product/blood-meal-organic-fertilizer/" target="_blank" class="learn-more">Learn more</a>
+    </div>    <br>
+  </div>
+
+<!-- image 2 -->
+
+  <div class="accordion-content" id="roots">
+    <div class="scheme-card">
+        <h3>1. DAP (Diammonium Phosphate)</h3>
+        <p><strong>Description:</strong> DAP is a rich source of phosphorus and nitrogen, essential for early root establishment and growth.</p>
+        <ul>
+          <li>Apply 40–50 kg per acre as a basal dose at the time of sowing or transplanting.</li>
+          <li>Ensure good soil moisture for better absorption.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Encourages strong root development and improves nutrient uptake efficiency.</p>
+        <a href="https://en.wikipedia.org/wiki/Diammonium_phosphate" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 2. SSP (Single Super Phosphate) -->
+      <div class="scheme-card">
+        <h3>2. SSP (Single Super Phosphate)</h3>
+        <p><strong>Description:</strong> SSP provides phosphorus, calcium, and sulfur, which help strengthen roots and improve crop yield.</p>
+        <ul>
+          <li>Apply 50–60 kg per acre before planting.</li>
+          <li>Best used in acidic and neutral soils.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Improves root structure and supports early crop growth stages.</p>
+        <a href="https://en.wikipedia.org/wiki/Superphosphate" target="_blank" class="learn-more">Learn more</a>
+      </div>
+      <br>
+      <!-- 3. Bone Meal (Organic Phosphorus Source) -->
+      <div class="scheme-card">
+        <h3>3. Bone Meal (Organic Fertilizer)</h3>
+        <p><strong>Description:</strong> A slow-release organic phosphorus fertilizer made from animal bones, ideal for root development in organic farming.</p>
+        <ul>
+          <li>Apply 5–10 kg per acre mixed with compost or topsoil before sowing.</li>
+          <li>Suited for root crops, vegetables, and flowers.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Enhances root mass naturally and improves long-term soil fertility.</p>
+        <a href="https://en.wikipedia.org/wiki/Bone_meal" target="_blank" class="learn-more">Learn more</a>
+      </div>
+  </div>
+
+  <!---image 3 -->
+  <div class="accordion-content" id="stems">
+    <div class="scheme-card">
+        <h3>1. MOP (Muriate of Potash)</h3>
+        <p><strong>Description:</strong> MOP is a potassium-rich fertilizer essential for strengthening plant stems and improving resistance to lodging and diseases.</p>
+        <ul>
+          <li>Apply 30–40 kg per acre during early growth or before flowering stage.</li>
+          <li>Can be broadcast or side-dressed with irrigation.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Enhances stem thickness, boosts drought resistance, and improves overall crop strength.</p>
+        <a href="https://en.wikipedia.org/wiki/Potassium_chloride" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 2. SOP (Sulphate of Potash) -->
+      <div class="scheme-card">
+        <h3>2. SOP (Sulphate of Potash)</h3>
+        <p><strong>Description:</strong> A chloride-free potassium fertilizer with added sulfur, ideal for crops sensitive to salt and for boosting stem growth.</p>
+        <ul>
+          <li>Apply 25–35 kg per acre as basal or top dressing.</li>
+          <li>Especially recommended for fruits, vegetables, and tobacco.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Improves plant rigidity and enhances flavor and quality of produce.</p>
+        <a href="https://en.wikipedia.org/wiki/Potassium_sulfate" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 3. Seaweed Extract (Organic Growth Booster) -->
+      <div class="scheme-card">
+        <h3>3. Seaweed Extract (Organic Booster)</h3>
+        <p><strong>Description:</strong> Organic bio-stimulant made from marine algae, rich in natural plant hormones and minerals that support stem growth and vigor.</p>
+        <ul>
+          <li>Use as foliar spray (2–3 ml per liter) every 15 days.</li>
+          <li>Compatible with both organic and conventional farming.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Stimulates stronger cell walls and accelerates healthy stem and root growth.</p>
+        <a href="https://en.wikipedia.org/wiki/Seaweed_fertilizer" target="_blank" class="learn-more">Learn more</a>
+      </div>
+    </div>
+
+    <!-- image 4 -->
+    <div class="accordion-content" id="pale">
+        <div class="scheme-card">
+            <h3>1. Zinc Sulfate</h3>
+            <p><strong>Description:</strong> Zinc is crucial for chlorophyll production and enzyme activation. Its deficiency leads to pale, stunted leaves, especially in rice, maize, and wheat.</p>
+            <ul>
+              <li>Apply 8–10 kg per acre as a soil application or 0.5% as foliar spray.</li>
+              <li>Best applied during early crop growth stages.</li>
+            </ul>
+            <p><strong>Benefits:</strong> Restores green color and improves tillering and grain filling.</p>
+            <a href="https://en.wikipedia.org/wiki/Zinc_sulfate" target="_blank" class="learn-more">Learn more</a>
+          </div><br>
+          
+          <!-- 2. Ferrous Sulfate (Iron) -->
+          <div class="scheme-card">
+            <h3>2. Ferrous Sulfate (Iron)</h3>
+            <p><strong>Description:</strong> Iron is vital for photosynthesis. Deficiency causes interveinal chlorosis (yellowing between veins), especially in young leaves.</p>
+            <ul>
+              <li>Apply 20–25 kg per acre in soil or 0.5–1% foliar spray every 10–15 days.</li>
+              <li>Apply early morning or late evening for best results.</li>
+            </ul>
+            <p><strong>Benefits:</strong> Improves chlorophyll formation and reverses leaf yellowing.</p>
+            <a href="https://en.wikipedia.org/wiki/Iron(II)_sulfate" target="_blank" class="learn-more">Learn more</a>
+          </div><br></br>
+          
+          <!-- 3. Magnesium Sulfate -->
+          <div class="scheme-card">
+            <h3>3. Magnesium Sulfate</h3>
+            <p><strong>Description:</strong> Magnesium is a central element in chlorophyll. Its deficiency shows as yellowing of older leaves with green veins.</p>
+            <ul>
+              <li>Apply 10–15 kg per acre or 1–2% as foliar spray for quick correction.</li>
+              <li>Use during early vegetative and flowering stages.</li>
+            </ul>
+            <p><strong>Benefits:</strong> Enhances photosynthesis and helps with nutrient transport in plants.</p>
+            <a href="https://en.wikipedia.org/wiki/Magnesium_sulfate" target="_blank" class="learn-more">Learn more</a>
+          </div>
+    </div>
+
+<!-- image 5 -->
+<div class="accordion-content" id="dropping">
+    <div class="scheme-card">
+        <h3>1. Borax (Boron Fertilizer)</h3>
+        <p><strong>Description:</strong> Boron plays a key role in flower development, pollination, and fruit set. Its deficiency leads to flower drop and poor fruit development.</p>
+        <ul>
+          <li>Apply 1–2 kg per acre in soil or 0.1–0.2% foliar spray during flowering.</li>
+          <li>Repeat foliar spray every 10–15 days if needed.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Enhances fruit setting, reduces dropping, and improves crop yield.</p>
+        <a href="https://en.wikipedia.org/wiki/Borax" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 2. Micronutrient Mix (with Boron, Zinc, Iron) -->
+      <div class="scheme-card">
+        <h3>2. Micronutrient Mix (B, Zn, Fe)</h3>
+        <p><strong>Description:</strong> A balanced micronutrient mix that addresses multiple minor deficiencies affecting flowering and fruiting.</p>
+        <ul>
+          <li>Apply 5–10 kg per acre or 0.5% foliar spray during flowering and fruiting stage.</li>
+          <li>Best applied as foliar spray for quick correction.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Improves fruit set and prevents physiological disorders like fruit cracking or premature drop.</p>
+        <a href="https://agritech.tnau.ac.in/agriculture/agri_majorareas_nutrientmanagement.html" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 3. 19:19:19 NPK (Balanced Foliar Fertilizer) -->
+      <div class="scheme-card">
+        <h3>3. NPK 19:19:19 (Balanced Foliar Fertilizer)</h3>
+        <p><strong>Description:</strong> A quick-acting foliar fertilizer containing equal parts nitrogen, phosphorus, and potassium, essential during flowering and fruiting stages.</p>
+        <ul>
+          <li>Use 5–10 kg per acre or 1–2% foliar spray every 10–15 days.</li>
+          <li>Do not apply under high sunlight or wind.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Supports flower retention and reduces fruit drop due to nutritional imbalance.</p>
+        <a href="https://en.wikipedia.org/wiki/NPK_fertilizer" target="_blank" class="learn-more">Learn more</a>
+      </div>   
+</div>
+
+ <!-- image 6 -->
+ <div class="accordion-content" id="spots">
+    <div class="scheme-card">
+        <h3>1. Calcium Nitrate</h3>
+        <p><strong>Description:</strong> A fast-acting source of calcium and nitrogen. Calcium helps in cell wall strength and prevents tip burn and blossom end rot in crops like tomato, pepper, and leafy greens.</p>
+        <ul>
+          <li>Apply 5–10 kg per acre or 0.5–1% foliar spray during vegetative and fruiting stages.</li>
+          <li>Apply in moist conditions or as fertigation for quick uptake.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Prevents tip burns, improves fruit firmness and quality.</p>
+        <a href="https://en.wikipedia.org/wiki/Calcium_nitrate" target="_blank" class="learn-more">Learn more</a>
+      </div><br>
+      
+      <!-- 2. SOP (Sulphate of Potash) -->
+      <div class="scheme-card">
+        <h3>2. SOP (Sulphate of Potash)</h3>
+        <p><strong>Description:</strong> Supplies potassium and sulfur without chloride. Potassium strengthens cell membranes and helps reduce scorching and necrotic leaf spots.</p>
+        <ul>
+          <li>Apply 25–35 kg per acre or 1% foliar spray in sensitive crops.</li>
+          <li>Best used in fruiting or flowering stage.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Reduces stress-related damage and improves drought resistance.</p>
+        <a href="https://en.wikipedia.org/wiki/Potassium_sulfate" target="_blank" class="learn-more">Learn more</a>
+      </div>
+      <br>
+      <!-- 3. Magnesium Sulfate -->
+      <div class="scheme-card">
+        <h3>3. Magnesium Sulfate</h3>
+        <p><strong>Description:</strong> Supplies magnesium and sulfur, essential for chlorophyll synthesis and preventing leaf scorch and interveinal yellowing.</p>
+        <ul>
+          <li>Apply 10–15 kg per acre or 1–2% foliar spray every 15 days as needed.</li>
+          <li>Use in early morning for maximum leaf absorption.</li>
+        </ul>
+        <p><strong>Benefits:</strong> Improves photosynthesis and reduces leaf burn in magnesium-deficient soils.</p>
+        <a href="https://en.wikipedia.org/wiki/Magnesium_sulfate" target="_blank" class="learn-more">Learn more</a>
+      </div>
+            </div>
+
+            <!-- image 7 -->
+      <div class="accordion-content" id="general">
+ </div>
+ <section>
+  <br>
+   <div class="dropdown-filter">
+     <select id="cropSelect" onchange="filterTable()"  class="search-box">
+       <option value="">🔍 Search by crop name:</option>
+       <option value="Wheat">Wheat</option>
+       <option value="Rice">Rice</option>
+       <option value="Maize">Maize</option>
+       <option value="Potato">Potato</option>
+       <option value="Tomato">Tomato</option>
+       <option value="Cotton">Cotton</option>
+       <option value="Banana">Banana</option>
+       <option value="Soybean">Soybean</option>
+       <option value="Sugarcane">Sugarcane</option>
+     </select>
+   </div>
+ <table id="cropTable">
+   <thead>
+     <tr>
+       <th>🌾 Crop</th>
+       <th>💡 Suggested Fertilizers</th>
+       <th>📅 Application Time</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr><td>Wheat</td><td>Urea, DAP, Zinc Sulfate</td><td>Before sowing, tillering stage</td></tr>
+     <tr><td>Rice</td><td>DAP, MOP, Urea, Zinc</td><td>Transplanting, tillering, flowering</td></tr>
+     <tr><td>Maize</td><td>Urea, DAP, MOP</td><td>Basal, V4 and V8 stages</td></tr>
+     <tr><td>Potato</td><td>NPK (12:32:16), MOP, Boron</td><td>Planting, tuber initiation</td></tr>
+     <tr><td>Tomato</td><td>NPK, Calcium Nitrate, Boron</td><td>Every 15–20 days</td></tr>
+     <tr><td>Cotton</td><td>NPK, SOP, Zinc</td><td>Vegetative and flowering stage</td></tr>
+     <tr><td>Banana</td><td>SOP, Urea, Borax</td><td>After planting, every 30 days</td></tr>
+     <tr><td>Soybean</td><td>SSP, Rhizobium Biofertilizer</td><td>Planting time</td></tr>
+     <tr><td>Sugarcane</td><td>NPK, Urea, MOP</td><td>Planting and after 30–60 days</td></tr>
+   </tbody>
+ </table>
+</section>
+
+    </main>
+
+
+  <!-- 
+    - #FOOTER
+  -->
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    function showContent(id) {
+      document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+       function filterTable() {
+        var select = document.getElementById("cropSelect");
+        var filter = select.value.toLowerCase();
+        var table = document.getElementById("cropTable");
+        var tr = table.getElementsByTagName("tr");
+  
+        for (var i = 1; i < tr.length; i++) {
+          var td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            var txtValue = td.textContent || td.innerText;
+            tr[i].style.display = txtValue.toLowerCase().includes(filter) ? "" : "none";
+          }
+        }
+      }
+</script>
+</body>
+
+</html>

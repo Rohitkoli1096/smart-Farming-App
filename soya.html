@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+  color: #1b3e20;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+main h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 24px 0;
+  color: #2e7d32;
+}
+
+.search-box {
+  display: block;
+  width: 90%;
+  margin: 0 auto 24px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.crop-guide {
+  padding: 16px;
+  display: grid;
+  gap: 24px;
+}
+
+.crop-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.crop-card:hover {
+  transform: translateY(-5px);
+}
+
+.crop-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.crop-card h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #1a3e2c;
+}
+
+.crop-card p,
+.crop-card ul,
+.crop-card table {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.crop-card ul {
+  padding-left: 18px;
+}
+
+.crop-card ul li {
+  margin-bottom: 6px;
+}
+
+.crop-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: #fafafa;
+  font-size: 0.9rem;
+}
+
+.crop-card table th,
+.crop-card table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 20%;
+  text-align: left;
+}
+
+.crop-card a {
+  color: #2e7d32;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .crop-guide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1>Soyabin Farming Guide</h1>
+    <input type="text" placeholder="Search crops..." class="search-box" />
+
+
+    <div class="crop-guide">
+<div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT6Q-540QXKQTkoY8DzJciMCweJfEDlCzk8w&s" alt="Soybean Introduction" />
+    <h2>✅ 1. Introduction to Soybean Farming</h2>
+    <p>Soybean (Glycine max) is a major oilseed crop, valued for its protein-rich seeds and oil content. It's widely used in food, animal feed, and industrial products.</p>
+    <h4>Main Uses:</h4>
+    <ul>
+      <li>Edible oil and soy flour</li>
+      <li>Animal feed and poultry industry</li>
+      <li>Processed foods: soy milk, tofu, etc.</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://images.unsplash.com/photo-1623860924182-05940982e44d" alt="Climate and Soil" />
+    <h2>📍 2. Suitable Climate and Soil</h2>
+    <h4>➤ Climate:</h4>
+    <ul>
+      <li>Warm and moist climate</li>
+      <li>Temperature: 20°C to 30°C</li>
+      <li>Rainfall: 500–800 mm (well-distributed)</li>
+    </ul>
+    <h4>➤ Soil:</h4>
+    <ul>
+      <li>Well-drained loamy or sandy loam</li>
+      <li>pH: 6.0–7.5</li>
+      <li>Rich in organic matter</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKH9d_XkDm2SBRtCHz-OmPiM-8DwmMzm7jcg&s" alt="Sowing Time" />
+    <h2>📅 3. Sowing Season</h2>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr><th>Region</th><th>Sowing Time</th><th>Harvesting</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kharif Season (India)</td><td>Mid-June to July</td><td>October to November</td></tr>
+        <tr><td>USA / Temperate Zones</td><td>April to May</td><td>September to October</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://www.financialexpress.com/wp-content/uploads/2017/07/Sowing-pti-2.jpg"  alt="Land Preparation" />
+    <h2>🌱 4. Land Preparation</h2>
+    <ul>
+      <li>1-2 deep ploughings followed by harrowing</li>
+      <li>Leveling the field to avoid waterlogging</li>
+      <li>Incorporate 10-15 tons FYM or compost per ha</li>
+    </ul>
+  </div>
+
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbWN9TdltiJGpZkHuGh9a5WCgirdbBpsR7tg&s" alt="Seed Selection" />
+    <h2>🌾 5. Seed Selection & Treatment</h2>
+    <ul>
+      <li>High-yielding, pest-resistant varieties: JS 335, NRC 37, MACS 124</li>
+      <li>Seed rate: 75–80 kg/ha</li>
+      <li>Treat with Rhizobium culture and fungicides (Thiram/Carbendazim)</li>
+    </ul>
+  </div>
+  
+  <!-- 6. Sowing Methods -->
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Uu-204npt7I-pycvJvVAl05U9zB_Tcl4kw&s" alt="Sowing Methods" />
+    <h2>🚜 6. Sowing Methods</h2>
+    <ul>
+      <li>Line sowing (drill method preferred)</li>
+      <li>Spacing: 45 cm (row) × 5–7 cm (plant)</li>
+      <li>Sowing depth: 3–4 cm</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZFHFk_MAuG-My5fsFBEXoXuRn4l5uKZVkGA&s" alt="Irrigation" />
+    <h2>💧 7. Irrigation Requirements</h2>
+    <ul>
+      <li>Needs 3–4 irrigations in rain-deficit areas</li>
+      <li>Critical stages: flowering, pod filling</li>
+      <li>Ensure proper drainage during monsoon</li>
+    </ul>
+  </div>
+  
+  <!-- 8. Fertilizer -->
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP2Njx6QSX6SpvMmviT0PmWi7SV5pGdHmbtlK2MFo-BcAME0gebHSc5ENSga4czfBhz6I&usqp=CAU" alt="Fertilizer" />
+    <h2>🌿 8. Fertilizer Management</h2>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr><th>Nutrient</th><th>Rate (kg/ha)</th><th>Application</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>N (Nitrogen)</td><td>20–30</td><td>Basal (starter dose only)</td></tr>
+        <tr><td>P (Phosphorus)</td><td>60–80</td><td>Basal</td></tr>
+        <tr><td>K (Potassium)</td><td>30–40</td><td>Basal</td></tr>
+        <tr><td>Micronutrients</td><td>Zinc, Sulphur</td><td>As needed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIjjJlAzlMsVfsawdL9N9xHkJY44_0sqH49A&s" alt="Pests" />
+    <h2>🐛 9. Pest and Disease Management</h2>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr><th>Problem</th><th>Symptoms</th><th>Control</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Stem fly</td><td>Yellowing, stunted growth</td><td>Imidacloprid spray</td></tr>
+        <tr><td>Leaf miner</td><td>Leaf tunnels</td><td>Spinosad spray</td></tr>
+        <tr><td>Anthracnose</td><td>Black lesions</td><td>Carbendazim</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- 10. Harvesting -->
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWQlUNCLWFS0wVLmghwOhvxK66I5uO6rspHg&s" alt="Harvest" />
+    <h2>🧺 10. Harvesting</h2>
+    <ul>
+      <li>Harvest when pods turn yellow & dry</li>
+      <li>Use sickle or combine harvester</li>
+      <li>Threshing by beating or using thresher</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpe9eb_kIpTZ6iyknvS3W8GmO9UbSDk0tvaw&s" alt="Post-Harvest" />
+    <h2>🧴 11. Post-Harvest Management</h2>
+    <ul>
+      <li>Dry grains to 9-10% moisture</li>
+      <li>Clean and sort grains</li>
+      <li>Store in cool, dry pest-free godowns</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ixtCiO3hho97pf0paue84covldFztoNuwg&s" alt="Yield" />
+    <h2>📈 12. Yield</h2>
+    <ul>
+      <li>Irrigated: 20–30 quintals/ha</li>
+      <li>Rain-fed: 10–15 quintals/ha</li>
+    </ul>
+  </div>
+
+  <div class="crop-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSygp--mQUEG3nQ5Vac0bl1fPySDasmmLZS_Q&s" alt="Profitability" />
+    <h2>💰 13. Economics / Profitability</h2>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead><tr><th>Input</th><th>Cost (₹/ha)</th></tr></thead>
+      <tbody>
+        <tr><td>Seeds</td><td>2,000 – 3,000</td></tr>
+        <tr><td>Fertilizer & Chemicals</td><td>3,000 – 5,000</td></tr>
+        <tr><td>Labor</td><td>4,000 – 6,000</td></tr>
+        <tr><td><strong>Total Cost</strong></td><td><strong>₹10,000 – ₹15,000</strong></td></tr>
+        <tr><td>Gross Return</td><td>₹30,000 – ₹50,000</td></tr>
+        <tr><td><strong>Net Profit</strong></td><td><strong>₹15,000 – ₹35,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="crop-card">
+    <img src="https://images.unsplash.com/photo-1606492619762-d8d72b6b2cf3" alt="Web Tips" />
+    <h2>🌐 14. Tips for Website Presentation</h2>
+    <ul>
+      <li>Banner: “Master Soybean Farming – Grow Smart, Earn Big!”</li>
+      <li>Infographics: Seed to Storage, Fertilizer schedule</li>
+      <li>FAQ block: “Why Rhizobium is important?”</li>
+      <li>Sidebar: Soy price tracker, weather, downloads</li>
+    </ul>
+      </div>
+    </div>
+   </div>  
+  </main>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

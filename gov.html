@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, #f1f8e9, #e8f5e9);
+  color: #1b3e20;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+main h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 24px 0;
+  color: #2e7d32;
+}
+
+.search-box {
+  display: block;
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f8f5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2d572c;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.card-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.scheme-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scheme-card:hover {
+    transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.scheme-card h3 {
+  font-size: 1.25rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.scheme-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.scheme-card ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.scheme-card ul li {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.learn-more {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  background-color: #2e7d32;
+  color: #fff;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+  background-color: #1b5e20;
+}
+
+.scheme-card .card-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.scheme-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.scheme-card .text {
+  flex: 1;
+}
+@media (max-width: 500px) {
+  .scheme-card .card-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .scheme-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .scheme-card .text {
+    text-align: left;
+  }
+}
+
+
+
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <h1>Government Support for Farmers</h1>
+    <input type="text" placeholder="Search Scheme..." class="search-box" />
+
+    <div class="scheme-card">
+        <div class="card-content">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjwgi8v5sI-cCoUvzgHKVvSoYWpXC3SaulJ-jvWkxTuNx8N_KOWDutLIwQNb0Yvnp5rs&usqp=CAU" alt="Scheme Image">
+          <div class="text">
+            <h3>1. PM-Kisan Samman Nidhi (PM-KISAN)</h3>
+            <p>Direct income support for small and marginal farmers.</p>
+            <ul>
+              <li>₹6,000 per year in 3 equal installments.</li>
+              <li>Funds transferred directly to the farmer’s bank account.</li>
+              <li>Over 12 crore farmers have benefited.</li>
+            </ul>
+            <a href="https://pmkisan.gov.in/" target="_blank" class="learn-more">Learn more</a>
+          </div>
+        </div>
+      </div>
+      
+      
+        <div class="scheme-card">
+            <div class="card-content">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSQkphmNZCuvJ7BoU0PgWP0GntPYODcOHqow&s" alt="Scheme Image">
+         <div class="text">
+          <h3>2. Pradhan Mantri Fasal Bima Yojana (PMFBY)</h3>
+          <p>Insurance coverage for crop loss due to natural calamities.</p>
+          <ul>
+            <li>2% premium for Kharif, 1.5% for Rabi crops.</li>
+            <li>Covers drought, floods, pests, etc.</li>
+            <li>Claim amount directly credited to farmer's account.</li>
+          </ul>
+          <a href="https://pmfby.gov.in/" target="_blank" class="learn-more">Learn more</a>
+           </div>
+         </div>
+      </div>
+      
+        <div class="scheme-card">
+          <div class="card-content">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMwk1_kOsBb5RKFMAR16-NwGELGtVY2VbFmw&s" alt="Scheme Image">
+              <div class="text">
+          <h3>3. Soil Health Card Scheme</h3>
+          <p>Promotes balanced use of fertilizers based on soil testing.</p>
+          <ul>
+            <li>Soil tested every 2 years.</li>
+            <li>Personalized nutrient report for optimal crop planning.</li>
+            <li>Reduces input cost and increases yield.</li>
+          </ul>
+          <a href="https://soilhealth.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div>
+          </div>
+            </div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://daulat.co.in/wp-content/uploads/2023/08/Kisan-Credit-Card-Apply-Online-Kisan-Loan-Scheme.jpg" alt="Scheme Image">
+                <div class="text">
+          <h3>4. Kisan Credit Card (KCC)</h3>
+          <p>Credit facility for crop production and allied activities.</p>
+          <ul>
+            <li>Loans up to ₹3 lakhs at interest as low as 4%.</li>
+            <li>For agriculture, animal husbandry, and fisheries.</li>
+            <li>Flexible repayment options.</li>
+          </ul>
+          <a href="https://www.pnbindia.in/kisan-credit-card.html" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/13/National_Agriculture_Market_%28eNAM%29_logo.png" alt="Scheme Image">
+            <div class="text">
+          <h3>5. e-NAM (National Agriculture Market)</h3>
+          <p>Online trading platform for farmers across India.</p>
+          <ul>
+            <li>Integrated with 1,000+ mandis.</li>
+            <li>Real-time price discovery and transparency.</li>
+            <li>Eliminates middlemen, improves profits.</li>
+          </ul>
+          <a href="https://enam.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://yt3.googleusercontent.com/ekElryfT_RAdCpaF33Vv3QZS4J7Wa7m8I226F-QmitjeyZisTBUge4PyjJ8rK1b4ZkH2sVBtIUk=s900-c-k-c0x00ffffff-no-rj" alt="Scheme Image">
+                <div class="text">
+          <h3>6. Pradhan Mantri Krishi Sinchai Yojana (PMKSY)</h3>
+          <p>Improve water-use efficiency in agriculture.</p>
+          <ul>
+            <li>Subsidy for drip and sprinkler irrigation systems.</li>
+            <li>“Har Khet Ko Pani” – water to every field.</li>
+            <li>Focus on micro-irrigation and watershed development.</li>
+          </ul>
+          <a href="https://pmksy.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://captaintractors.com/UploadedImages/0879d7b4-4565-4b5d-8738-cce9d74d41ea_smam.png" alt="Scheme Image">
+                <div class="text">
+          <h3>7. Sub-Mission on Agricultural Mechanization (SMAM)</h3>
+          <p>Support for modern farming tools and machinery.</p>
+          <ul>
+            <li>Up to 80% subsidy on farm equipment.</li>
+            <li>Focus on small and marginal farmers.</li>
+            <li>Support for custom hiring centers.</li>
+          </ul>
+          <a href="https://agrimachinery.nic.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://nivedi.res.in/NaaViC/wp-content/uploads/2019/10/image1.jpg" alt="Scheme Image">
+                <div class="text">
+          <h3>8. Rashtriya Krishi Vikas Yojana (RKVY)</h3>
+          <p>Support for agricultural innovation and infrastructure.</p>
+          <ul>
+            <li>Funding for agri-startups and value chain development.</li>
+            <li>Focus on modern farming methods and training.</li>
+            <li>Flexible support for state-level priorities.</li>
+          </ul>
+          <a href="https://rkvy.nic.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+      
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://i2.wp.com/onlineappsc.com/wp-content/uploads/2020/05/NATIONAL-MISSION-FOR-SUSTAINABLE-AGRICULTURE.jpg?fit=765%2C500&ssl=1" alt="Scheme Image">
+                <div class="text">
+          <h3>9. National Mission on Sustainable Agriculture (NMSA)</h3>
+          <p>Promote climate-resilient and sustainable farming practices.</p>
+          <ul>
+            <li>Supports organic farming and rainwater harvesting.</li>
+            <li>Improves soil health and water-use efficiency.</li>
+            <li>Promotes agroforestry and climate-smart farming.</li>
+          </ul>
+          <a href="https://nmsa.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+
+
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFHJhhC5G_R-06NVczUE1GQSsQiuLb7MrpPg&s" alt="Scheme Image">
+                <div class="text">
+          <h3>11. Integrated Development of Horticulture (MIDH)</h3>
+          <p>Promote holistic development of fruits, vegetables, spices, and flowers.</p>
+          <ul>
+            <li>Financial assistance for horticulture production and post-harvest management.</li>
+            <li>Support for nurseries, seed production, and organic farming.</li>
+            <li>Capacity building and market development initiatives.</li>
+          </ul>
+          <a href="https://www.apnikheti.com/en/pn/govt-schemes" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+        
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSQkphmNZCuvJ7BoU0PgWP0GntPYODcOHqow&s" alt="Scheme Image">
+                <div class="text">
+          <h3>12. Market Intervention Scheme & Price Support Scheme (MIS-PSS)</h3>
+          <p>Protects farmers from distress sales and price crashes.</p>
+          <ul>
+            <li>Government procurement of perishable and price-sensitive crops.</li>
+            <li>Assures Minimum Support Price (MSP) for eligible crops.</li>
+            <li>Improves market stability and farmer income security.</li>
+          </ul>
+          <a href="https://organiser.org/2024/12/23/270429/bharat/national-farmers-day-a-tribute-to-bharats-annadatas/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+        
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhHzEs51xTeDred-Ovw5wDrZOByCDIbdPoFA&s" alt="Scheme Image">
+                <div class="text">
+          <h3>10. Agri Infrastructure Fund</h3>
+          <p>Loan support for building rural post-harvest infrastructure.</p>
+          <ul>
+            <li>Interest subsidy on loans for warehouses and cold storage.</li>
+            <li>Open to farmers, FPOs, cooperatives, and agri-entrepreneurs.</li>
+            <li>Improves storage and market linkage opportunities.</li>
+          </ul>
+          <a href="https://agriinfra.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
+     
+    </div>
+  </main>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+          </a>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-link-box">
+
+          <ul class="footer-list">
+
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li>
+              <address class="footer-link">
+                <ion-icon name="location"></ion-icon>
+
+                <span class="footer-link-text">
+                  At Post Bhilali Tal-Parola, Dist-Jalgoan
+                </span>
+              </address>
+            </li>
+
+            <li>
+              <a href="tel:+557343673257" class="footer-link">
+                <ion-icon name="call"></ion-icon>
+
+                <span class="footer-link-text">+91 7020572471</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:GroVia@help.com" class="footer-link">
+                <ion-icon name="mail"></ion-icon>
+
+                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
+              </a>
+            </li>
+
+          </ul>
+
+          <ul class="footer-list">
+
+           
+
+          </ul>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Contact Time</p>
+
+            <table class="footer-table">
+              <tbody>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Mon - Tue:</th>
+
+                  <td class="table-data">8AM - 10PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Wed:</th>
+
+                  <td class="table-data">8AM - 7PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Fri:</th>
+
+                  <td class="table-data">7AM - 12PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sat:</th>
+
+                  <td class="table-data">9AM - 8PM</td>
+                </tr>
+
+                <tr class="table-row">
+                  <th class="table-head" scope="row">Sun:</th>
+
+                  <td class="table-data"><p style="color: red;">Closed</p></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="newsletter-text">
+             At Post Bhilali Tal-Parola, Dist-Jalgoan
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
+
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

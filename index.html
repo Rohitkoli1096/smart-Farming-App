@@ -39,38 +39,218 @@
       margin-bottom: 30px;
     }
 
+
     .crop-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      padding: 20px;
+      justify-items: center;
+    }
+
+    .crop-card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+      overflow: hidden;
+      width: 220px;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .crop-card .image-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 1rem auto 0;
+      border: 3px solid #3bb143;
+    }
+
+    .crop-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .crop-card-body {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .crop-card-body h2 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      color: #3b3b3b;
+    }
+
+    .crop-card-body p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .crop-link {
+      text-decoration: none;
+    }
+
+/* === General Section Styling === */
+.toolbox-section {
+  background: #f0fdf2;
+  padding: 3rem 1rem;
+  border-top: 4px solid #3bb143;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.toolbox-section h2 {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* === Responsive Grid Layout === */
+.toolbox-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
 }
 
-.crop-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* Force exactly 2 cards per row on larger screens */
+@media (min-width: 601px) {
+  .toolbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Stack cards on smaller screens */
+@media (max-width: 600px) {
+  .toolbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Card Base Style === */
+.toolbox-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
+  width: 100%;
 }
 
-.crop-card:hover {
-  transform: translateY(-5px);
+.toolbox-card:hover {
+  transform: scale(1.03);
 }
 
-.crop-card img {
+.toolbox-card img {
   width: 100%;
   height: 160px;
   object-fit: contain;
 }
 
-.crop-card div {
-  padding: 15px;
+.card-content {
+  padding: 1rem;
+  text-align: center;
 }
 
-.crop-link {
-  text-decoration: none;
-  color: inherit;
+.card-content h3 {
+  color: #3bb143;
+  margin-top: 0;
+}
+
+/* === Special Colored Cards === */
+.card-yellow {
+  background: #fffbe7;
+}
+
+.card-yellow h3 {
+  color: #f9a825;
+}
+
+.card-blue {
+  background: #e3f2fd;
+}
+
+.card-blue h3 {
+  color: #1976d2;
+}
+
+/* === Buttons === */
+.toolbox-button {
+  background: #3bb143;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.button-blue {
+  background: #1976d2;
+}
+
+.button-yellow {
+  background: #f9a825;
+}
+
+/* === Seed Calculator Card === */
+#seedCalculatorCard {
+  background: #fdfefe;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+#seedCalculatorCard h3 {
+  color: #3bb143;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#seedCalculatorCard label,
+#seedCalculatorCard select,
+#seedCalculatorCard input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#seedCalculatorCard select,
+#seedCalculatorCard input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#seedCalculatorCard button {
+  background: #3bb143;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+#seedResult {
+  font-weight: bold;
+  color: #2e7d32;
+  text-align: center;
+  margin-top: 10px;
 }
 
 </style>
@@ -179,247 +359,201 @@
  <section class="crop-cards">
 
   <a href="rice.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg" alt="Rice" />
-      <div>
-        <h2>Rice</h2>
-        <p><strong>Growing season:</strong> Kharif</p>
-        <p>Keep the soil flooded, let the rice party!</p>
+    <div class="crop-card" data-name="rice">
+      <div class="image-container">
+        <img src="https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg" alt="Rice" />
       </div>
-    </div></a>
+      <div class="crop-card-body">
+        <h2>Rice</h2>
+        <p><strong>Season:</strong> Kharif</p>
+      </div>
+    </div>
+  </a>
 
   <a href="wheat.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3RHATUPsiPHDoc4imUWTQ3OXsRIOYZbNsMBZM_tIOnHxypoXxRYPToCdwDqOxINx-c9U&usqp=CAU" alt="Wheat Crop Image" />
-      <div>
+    <div class="crop-card" data-name="wheat">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3RHATUPsiPHDoc4imUWTQ3OXsRIOYZbNsMBZM_tIOnHxypoXxRYPToCdwDqOxINx-c9U&usqp=CAU" alt="Wheat" />
+      </div>
+      <div class="crop-card-body">
         <h2>Wheat</h2>
-        <p><strong>Growing season:</strong> Rabi</p>
-        <p>Water moderately, don’t drown your wheat.</p>
+        <p><strong>Season:</strong> Rabi</p>
       </div>
     </div>
   </a>
 
   <a href="soya.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://e.saravanaonline.com/4853-large_default/soya-bean-seeds-500-gm.jpg" alt="Soybean Crop Image" />
-      <div>
+    <div class="crop-card" data-name="soybean">
+      <div class="image-container">
+        <img src="https://e.saravanaonline.com/4853-large_default/soya-bean-seeds-500-gm.jpg" alt="Soybean" />
+      </div>
+      <div class="crop-card-body">
         <h2>Soybean</h2>
-        <p><strong>Growing season:</strong> Kharif</p>
-        <p>Water enough to make ‘em happy, but not soggy.</p>
       </div>
     </div>
   </a>
 
   <a href="bajara.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt4LL6JQxKfdgZ1awXRwl9ydkihyHFJ4ESZQ&s" alt="Bajra Crop Image" />
-      <div>
+    <div class="crop-card" data-name="bajra">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt4LL6JQxKfdgZ1awXRwl9ydkihyHFJ4ESZQ&s" alt="Bajra" />
+      </div>
+      <div class="crop-card-body">
         <h2>Bajra</h2>
-        <p><strong>Growing season:</strong> Kharif</p>
-        <p>Thrives in dry conditions—drought? Bajra doesn't care!</p>
+        <p><strong>Season:</strong> Kharif</p>
       </div>
     </div>
   </a>
 
-  <a href="cottonfarm.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-y3NIkbkDWGvnaR7c6m2bejtRyb837P3vA&s" alt="Cotton Crop Image" />
-      <div>
+  <a href="cotton.html" class="crop-link">
+    <div class="crop-card" data-name="cotton">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-y3NIkbkDWGvnaR7c6m2bejtRyb837P3vA&s" alt="Cotton" />
+      </div>
+      <div class="crop-card-body">
         <h2>Cotton</h2>
-        <p><strong>Growing season:</strong> Kharif</p>
-        <p>Needs warmth and sunshine—cotton loves the heat!</p>
+        <p><strong>Season:</strong> Kharif</p>
       </div>
     </div>
   </a>
-
-  
-  <a href="maizefarm.html" class="crop-link">
-    <div class="crop-card">
-      <img src="https://seed2plant.in/cdn/shop/products/maizeseeds.jpg?v=1604034397" alt="Maize Crop Image" />
-      <div>
-        <h2>Maize</h2>
-        <p><strong>Growing season:</strong> Kharif</p>
-        <p>Give those roots some air, don’t smother them!</p>
+  <a href="" class="crop-link">
+    <div class="crop-card" data-name="wheat">
+      <div class="image-container">
+        <img src="https://media.istockphoto.com/id/841408966/photo/corn-on-the-cob-kernels-peeled-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=v76mGkmlRYhLo98AMVQbpCpYwDc-1OGv7pI96aHc8zA=" alt="Maize" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Wheat</h2>
+        <p><strong>Season:</strong> Rabi</p>
       </div>
     </div>
   </a>
-
 
 </section>
 
+<section class="toolbox-section">
+  <h2>🧑‍🌾 Farmer's Smart Toolbox</h2>
+
+  <div class="toolbox-grid">
+    <!-- Crop Tracker -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/farming-infographic-template_1284-12984.jpg" alt="Crop Tracker">
+      <div class="card-content">
+        <h3>🌱 Crop Stage Tracker</h3>
+        <p>Current: Sowing</p>
+        <p>Next: Apply Urea in 3 days</p>
+        <progress value="40" max="100" style="width:100%; height: 10px;"></progress>
+      </div>
+    </div>
+
+    <!-- Weather -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/weather-concept-illustration_114360-1254.jpg" alt="Weather">
+      <div class="card-content">
+        <h3>🌦️ Live Weather</h3>
+        <p>Get local rain and humidity alerts</p>
+        <button onclick="location.href='weather.html'" class="toolbox-button">Check Weather</button>
+      </div>
+    </div>
+
+    <!-- Mandi Rates -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/marketplace-concept-illustration_114360-3023.jpg" alt="Mandi Rates">
+      <div class="card-content">
+        <h3>📈 Mandi Rates</h3>
+        <p>Check today's crop prices</p>
+        <button onclick="location.href=''" class="toolbox-button">View Prices</button>
+      </div>
+    </div>
+
+    <!-- Buy Inputs -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/agriculture-products-promotion-banner_23-2148624707.jpg" alt="Buy Inputs">
+      <div class="card-content">
+        <h3>🛒 Buy Inputs</h3>
+        <p>Seeds, fertilizers, tools</p>
+        <button onclick="location.href='fertibuy.html'" class="toolbox-button">Shop Now</button>
+      </div>
+    </div>
+
+    <!-- Tip of the Day -->
+    <div class="toolbox-card card-yellow" style="background: #fffbe7;">
+      <img src="https://img.freepik.com/free-vector/informative-idea-concept-illustration_114360-2612.jpg" alt="Tips">
+      <div class="card-content">
+        <h3>💡 Tip of the Day</h3>
+        <p>"Apply organic compost before sowing for better yield."</p>
+      </div>
+    </div>
+
+    <!-- Community Help -->
+    <div class="toolbox-card card-blue" style="background: #e3f2fd;">
+      <img src="https://img.freepik.com/free-vector/community-concept-illustration_114360-3955.jpg" alt="Community">
+      <div class="card-content">
+        <h3>👥 Community Help</h3>
+        <p>Ask questions & get expert help</p>
+        <button onclick="location.href=''" class="toolbox-button button-blue">Join Now</button>
+      </div>
+    </div>
+
+    <!-- Seed Calculator -->
+    <div id="seedCalculatorCard">
+      <h3>🌾 Advanced Seed Requirement Calculator</h3>
+      <label for="seedCrop">Select Crop:</label>
+      <select id="seedCrop">
+        <option value="rice">Rice</option>
+        <option value="wheat">Wheat</option>
+        <option value="soybean">Soybean</option>
+        <option value="bajra">Bajra</option>
+        <option value="cotton">Cotton</option>
+        <option value="maize">Maize</option>
+        <option value="groundnut">Groundnut</option>
+        <option value="gram">Gram</option>
+        <option value="mustard">Mustard</option>
+      </select>
+
+      <label for="areaUnit">Select Area Unit:</label>
+      <select id="areaUnit">
+        <option value="acre">Acre</option>
+        <option value="hectare">Hectare</option>
+        <option value="bigha">Bigha</option>
+      </select>
+
+      <label for="seedArea">Enter Area:</label>
+      <input type="number" id="seedArea" placeholder="e.g. 2.5">
+
+      <button onclick="calculateSeed()">Calculate</button>
+      <p id="seedResult"></p>
+    </div>
+  </div>
+</section>
     
   </main>
 
 
 
+ <div class="bottom-nav">
+    <a href="index.html">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </a>
+    <a href="product.html">
+      <ion-icon name="pricetags-outline"></ion-icon>
+      <span>Products</span>
+    </a>
+    <a href="post.html">
+      <ion-icon name="Add"></ion-icon>
+      <span> Post</span>
+    </a>
+    <a href="tem.html">
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+      <span>Temparature</span>
+    </a>
+    <a href="contact.html">
+      <ion-icon name="call-outline"></ion-icon>
+      <span>Contact</span>
+    </a>
+  </div>
 
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
-
-    <div class="footer-top section">
-      <div class="container">
-
-        <div class="footer-brand">
-
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
-          </a>
-
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-pinterest"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div class="footer-link-box">
-
-          <ul class="footer-list">
-
-            <li>
-              <p class="footer-list-title">Contact Us</p>
-            </li>
-
-            <li>
-              <address class="footer-link">
-                <ion-icon name="location"></ion-icon>
-
-                <span class="footer-link-text">
-                  At Post Bhilali Tal-Parola, Dist-Jalgoan
-                </span>
-              </address>
-            </li>
-
-            <li>
-              <a href="tel:+557343673257" class="footer-link">
-                <ion-icon name="call"></ion-icon>
-
-                <span class="footer-link-text">+91 7020572471</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="mailto:GroVia@help.com" class="footer-link">
-                <ion-icon name="mail"></ion-icon>
-
-                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
-              </a>
-            </li>
-
-          </ul>
-
-          <ul class="footer-list">
-
-           
-
-          </ul>
-
-          <div class="footer-list">
-
-            <p class="footer-list-title">Contact Time</p>
-
-            <table class="footer-table">
-              <tbody>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Mon - Tue:</th>
-
-                  <td class="table-data">8AM - 10PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Wed:</th>
-
-                  <td class="table-data">8AM - 7PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Fri:</th>
-
-                  <td class="table-data">7AM - 12PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Sat:</th>
-
-                  <td class="table-data">9AM - 8PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Sun:</th>
-
-                  <td class="table-data"><p style="color: red;">Closed</p></td>
-                </tr>
-
-              </tbody>
-            </table>
-
-          </div>
-
-          <div class="footer-list">
-
-            <p class="footer-list-title">Newsletter</p>
-
-            <p class="newsletter-text">
-             At Post Bhilali Tal-Parola, Dist-Jalgoan
-            </p>
-
-            <form action="" class="newsletter-form">
-              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
-
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
-        </p>
-
-      </div>
-    </div>
-
-  </footer>
-
-
-
-
-
+  
   <!-- 
     - #GO TO TOP
   -->
@@ -442,7 +576,37 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+      function calculateSeed() {
+        const crop = document.getElementById("seedCrop").value;
+        const unit = document.getElementById("areaUnit").value;
+        let area = parseFloat(document.getElementById("seedArea").value);
 
+        if (isNaN(area) || area <= 0) {
+          document.getElementById("seedResult").innerText = "❌ Please enter a valid area.";
+          return;
+        }
+
+        // Convert area to acres if needed
+        if (unit === "hectare") area *= 2.47105;
+        if (unit === "bigha") area *= 0.619;
+
+        const seedRates = {
+          rice: 20,
+          wheat: 50,
+          soybean: 30,
+          bajra: 5,
+          cotton: 2,
+          maize: 18,
+          groundnut: 80,
+          gram: 45,
+          mustard: 4
+        };
+
+        const totalSeed = (seedRates[crop] || 0) * area;
+        document.getElementById("seedResult").innerText = `🌾 You need approx. ${totalSeed.toFixed(2)} kg of ${crop} seeds for ${area.toFixed(2)} acre(s).`;
+      }
+</script>
 </body>
 
 </html>

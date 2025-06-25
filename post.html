@@ -149,6 +149,41 @@
       font-size: 14px;
       outline: none;
     }
+    
+    .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #ccc;
+    z-index: 100;
+  }
+
+  [data-theme="dark"] .bottom-nav {
+    background: rgba(18, 18, 18, 0.95);
+  }
+
+  .bottom-nav a {
+    color: var(--text-light);
+    text-align: center;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+
+  [data-theme="dark"] .bottom-nav a {
+    color: var(--text-dark);
+  }
+
+  .bottom-nav ion-icon {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+  } 
 </style>
 </head>
 
@@ -265,6 +300,28 @@
     <ion-icon name="arrow-up-outline"></ion-icon>
   </a>
 
+  <div class="bottom-nav">
+    <a href="index.html">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </a>
+    <a href="product.html">
+      <ion-icon name="pricetags-outline"></ion-icon>
+      <span>Products</span>
+    </a>
+    <a href="post.html">
+      <ion-icon name="Add"></ion-icon>
+      <span> Post</span>
+    </a>
+    <a href="tem.html">
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+      <span>Temparature</span>
+    </a>
+    <a href="contact.html">
+      <ion-icon name="call-outline"></ion-icon>
+      <span>Contact</span>
+    </a>
+  </div>
   </main>
 
 

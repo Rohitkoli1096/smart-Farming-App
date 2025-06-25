@@ -434,7 +434,36 @@
 
 <section class="toolbox-section">
   <h2>🧑‍🌾 Farmer's Smart Toolbox</h2>
+   <!-- Seed Calculator -->
+    <div id="seedCalculatorCard">
+      <h3>🌾 Advanced Seed Requirement Calculator</h3>
+      <label for="seedCrop">Select Crop:</label>
+      <select id="seedCrop">
+        <option value="rice">Rice</option>
+        <option value="wheat">Wheat</option>
+        <option value="soybean">Soybean</option>
+        <option value="bajra">Bajra</option>
+        <option value="cotton">Cotton</option>
+        <option value="maize">Maize</option>
+        <option value="groundnut">Groundnut</option>
+        <option value="gram">Gram</option>
+        <option value="mustard">Mustard</option>
+      </select>
 
+      <label for="areaUnit">Select Area Unit:</label>
+      <select id="areaUnit">
+        <option value="acre">Acre</option>
+        <option value="hectare">Hectare</option>
+        <option value="bigha">Bigha</option>
+      </select>
+
+      <label for="seedArea">Enter Area:</label>
+      <input type="number" id="seedArea" placeholder="e.g. 2.5">
+
+      <button onclick="calculateSeed()">Calculate</button>
+      <p id="seedResult"></p>
+    </div>
+  
   <div class="toolbox-grid">
     <!-- Crop Tracker -->
     <div class="toolbox-card">
@@ -496,35 +525,7 @@
       </div>
     </div>
 
-    <!-- Seed Calculator -->
-    <div id="seedCalculatorCard">
-      <h3>🌾 Advanced Seed Requirement Calculator</h3>
-      <label for="seedCrop">Select Crop:</label>
-      <select id="seedCrop">
-        <option value="rice">Rice</option>
-        <option value="wheat">Wheat</option>
-        <option value="soybean">Soybean</option>
-        <option value="bajra">Bajra</option>
-        <option value="cotton">Cotton</option>
-        <option value="maize">Maize</option>
-        <option value="groundnut">Groundnut</option>
-        <option value="gram">Gram</option>
-        <option value="mustard">Mustard</option>
-      </select>
-
-      <label for="areaUnit">Select Area Unit:</label>
-      <select id="areaUnit">
-        <option value="acre">Acre</option>
-        <option value="hectare">Hectare</option>
-        <option value="bigha">Bigha</option>
-      </select>
-
-      <label for="seedArea">Enter Area:</label>
-      <input type="number" id="seedArea" placeholder="e.g. 2.5">
-
-      <button onclick="calculateSeed()">Calculate</button>
-      <p id="seedResult"></p>
-    </div>
+ 
   </div>
 </section>
     

@@ -168,7 +168,40 @@ h1 {
     text-align: left;
   }
 }
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #ccc;
+    z-index: 100;
+  }
 
+  [data-theme="dark"] .bottom-nav {
+    background: rgba(18, 18, 18, 0.95);
+  }
+
+  .bottom-nav a {
+    color: var(--text-light);
+    text-align: center;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+
+  [data-theme="dark"] .bottom-nav a {
+    color: var(--text-dark);
+  }
+
+  .bottom-nav ion-icon {
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+  } 
 
 
 
@@ -227,7 +260,7 @@ h1 {
           </li>
 
           <li class="navbar-item">
-                <a href="post.html" class="navbar-link"> Community</a>
+            <a href="" class="navbar-link">Contact</a>
           </li>
         </ul>
 
@@ -273,7 +306,7 @@ h1 {
     </div>
   </header>
 
-  <main><br><br><br>
+  <main>
     <h1>Government Support for Farmers</h1>
     <input type="text" placeholder="Search Scheme..." class="search-box" />
 
@@ -291,7 +324,7 @@ h1 {
             <a href="https://pmkisan.gov.in/" target="_blank" class="learn-more">Learn more</a>
           </div>
         </div>
-      </div><br>
+      </div>
       
       
         <div class="scheme-card">
@@ -308,7 +341,7 @@ h1 {
           <a href="https://pmfby.gov.in/" target="_blank" class="learn-more">Learn more</a>
            </div>
          </div>
-      </div><br>
+      </div>
       
         <div class="scheme-card">
           <div class="card-content">
@@ -324,7 +357,7 @@ h1 {
           <a href="https://soilhealth.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
         </div>
           </div>
-            </div><br>
+            </div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -338,7 +371,7 @@ h1 {
             <li>Flexible repayment options.</li>
           </ul>
           <a href="https://www.pnbindia.in/kisan-credit-card.html" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -352,7 +385,7 @@ h1 {
             <li>Eliminates middlemen, improves profits.</li>
           </ul>
           <a href="https://enam.gov.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -366,7 +399,7 @@ h1 {
             <li>Focus on micro-irrigation and watershed development.</li>
           </ul>
           <a href="https://pmksy.gov.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -380,7 +413,7 @@ h1 {
             <li>Support for custom hiring centers.</li>
           </ul>
           <a href="https://agrimachinery.nic.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -394,7 +427,7 @@ h1 {
             <li>Flexible support for state-level priorities.</li>
           </ul>
           <a href="https://rkvy.nic.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
       
         <div class="scheme-card">
             <div class="card-content">
@@ -408,21 +441,8 @@ h1 {
             <li>Promotes agroforestry and climate-smart farming.</li>
           </ul>
           <a href="https://nmsa.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
-    
-<div class="scheme-card">
-            <div class="card-content">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhHzEs51xTeDred-Ovw5wDrZOByCDIbdPoFA&s" alt="Scheme Image">
-                <div class="text">
-          <h3>10. Agri Infrastructure Fund</h3>
-          <p>Loan support for building rural post-harvest infrastructure.</p>
-          <ul>
-            <li>Interest subsidy on loans for warehouses and cold storage.</li>
-            <li>Open to farmers, FPOs, cooperatives, and agri-entrepreneurs.</li>
-            <li>Improves storage and market linkage opportunities.</li>
-          </ul>
-          <a href="https://agriinfra.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
+
 
         <div class="scheme-card">
             <div class="card-content">
@@ -436,7 +456,7 @@ h1 {
             <li>Capacity building and market development initiatives.</li>
           </ul>
           <a href="https://www.apnikheti.com/en/pn/govt-schemes" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
         
         <div class="scheme-card">
             <div class="card-content">
@@ -450,9 +470,21 @@ h1 {
             <li>Improves market stability and farmer income security.</li>
           </ul>
           <a href="https://organiser.org/2024/12/23/270429/bharat/national-farmers-day-a-tribute-to-bharats-annadatas/" target="_blank" class="learn-more">Learn more</a>
-        </div></div></div><br>
+        </div></div></div>
         
-        
+        <div class="scheme-card">
+            <div class="card-content">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhHzEs51xTeDred-Ovw5wDrZOByCDIbdPoFA&s" alt="Scheme Image">
+                <div class="text">
+          <h3>10. Agri Infrastructure Fund</h3>
+          <p>Loan support for building rural post-harvest infrastructure.</p>
+          <ul>
+            <li>Interest subsidy on loans for warehouses and cold storage.</li>
+            <li>Open to farmers, FPOs, cooperatives, and agri-entrepreneurs.</li>
+            <li>Improves storage and market linkage opportunities.</li>
+          </ul>
+          <a href="https://agriinfra.dac.gov.in/" target="_blank" class="learn-more">Learn more</a>
+        </div></div></div>
      
     </div>
   </main>
@@ -463,165 +495,28 @@ h1 {
   <!-- 
     - #FOOTER
   -->
-
-  <footer class="footer">
-
-    <div class="footer-top section">
-      <div class="container">
-
-        <div class="footer-brand">
-
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
-          </a>
-
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-pinterest"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div class="footer-link-box">
-
-          <ul class="footer-list">
-
-            <li>
-              <p class="footer-list-title">Contact Us</p>
-            </li>
-
-            <li>
-              <address class="footer-link">
-                <ion-icon name="location"></ion-icon>
-
-                <span class="footer-link-text">
-                  At Post Bhilali Tal-Parola, Dist-Jalgoan
-                </span>
-              </address>
-            </li>
-
-            <li>
-              <a href="tel:+557343673257" class="footer-link">
-                <ion-icon name="call"></ion-icon>
-
-                <span class="footer-link-text">+91 7020572471</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="mailto:GroVia@help.com" class="footer-link">
-                <ion-icon name="mail"></ion-icon>
-
-                <span class="footer-link-text">rohitkoli1e@gmail.com</span>
-              </a>
-            </li>
-
-          </ul>
-
-          <ul class="footer-list">
-
-           
-
-          </ul>
-
-          <div class="footer-list">
-
-            <p class="footer-list-title">Contact Time</p>
-
-            <table class="footer-table">
-              <tbody>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Mon - Tue:</th>
-
-                  <td class="table-data">8AM - 10PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Wed:</th>
-
-                  <td class="table-data">8AM - 7PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Fri:</th>
-
-                  <td class="table-data">7AM - 12PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Sat:</th>
-
-                  <td class="table-data">9AM - 8PM</td>
-                </tr>
-
-                <tr class="table-row">
-                  <th class="table-head" scope="row">Sun:</th>
-
-                  <td class="table-data"><p style="color: red;">Closed</p></td>
-                </tr>
-
-              </tbody>
-            </table>
-
-          </div>
-
-          <div class="footer-list">
-
-            <p class="footer-list-title">Newsletter</p>
-
-            <p class="newsletter-text">
-             At Post Bhilali Tal-Parola, Dist-Jalgoan
-            </p>
-
-            <form action="" class="newsletter-form">
-              <input type="email" name="email" required placeholder="Email Address" class="newsletter-input">
-
-              <button type="submit" class="btn btn-primary">Subscribe</button>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2025 <a href="#" class="copyright-link">KoliRohit1e</a>. All Rights Reserved
-        </p>
-
-      </div>
-    </div>
-
-  </footer>
-
+ <div class="bottom-nav">
+  <a href="index.html">
+    <ion-icon name="home-outline"></ion-icon>
+    <span>Home</span>
+  </a>
+  <a href="product.html">
+    <ion-icon name="pricetags-outline"></ion-icon>
+    <span>Products</span>
+  </a>
+  <a href="post.html">
+    <ion-icon name="Add"></ion-icon>
+    <span> Post</span>
+  </a>
+   <a href="tem.html">
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+      <span>Temparature</span>
+    </a>
+  <a href="contact.html">
+    <ion-icon name="call-outline"></ion-icon>
+    <span>Contact</span>
+  </a>
+</div>
 
 
 

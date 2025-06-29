@@ -290,8 +290,6 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
-  const yourProfile = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZHdDuBUrPwHTEwgzZQxxRyCE9rQPDrqhssESn1vA6aEsNTKFfhYQb2cMwhoMlq11CctY&usqp=CAU";
-
   function getPosts() {
     return JSON.parse(localStorage.getItem("posts")) || [];
   }
@@ -301,62 +299,41 @@
   }
 
   function createPost() {
-  const caption = document.getElementById("newCaption").value.trim();
-  const file = document.getElementById("newImage").files[0];
-  const userProfile = JSON.parse(localStorage.getItem("userProfile") || "{}");
+    const caption = document.getElementById("newCaption").value.trim();
+    const file = document.getElementById("newImage").files[0];
+    const userProfile = JSON.parse(localStorage.getItem("userProfile") || "{}");
 
-  if (!caption && !file) return alert("Please add text or image.");
+    if (!caption && !file) return alert("Please add text or image.");
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const posts = getPosts();
-    posts.unshift({
-      username: userProfile.name || "You",
-      userImg: userProfile.image || "https://i.pravatar.cc/100",
-      img: file ? e.target.result : "",
-      caption,
-      likes: 0,
-      liked: false,
-      comments: [],
-      owner: true
-    });
-    savePosts(posts);
-    renderPosts();
-  };
-
-  if (file) reader.readAsDataURL(file);
-  else {
-    const posts = getPosts();
-    posts.unshift({
-      username: userProfile.name || "You",
-      userImg: userProfile.image || "https://i.pravatar.cc/100",
-      img: "",
-      caption,
-      likes: 0,
-      liked: false,
-      comments: [],
-      owner: true
-    });
-    savePosts(posts);
-    renderPosts();
-  }
-
-  document.getElementById("newCaption").value = "";
-  document.getElementById("newImage").value = "";
-}
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const posts = getPosts();
+      posts.unshift({
+        username: userProfile.name || "You",
+        userImg: userProfile.image || "https://i.pravatar.cc/100",
+        img: file ? e.target.result : "",
+        caption,
+        likes: 0,
+        liked: false,
+        comments: [],
+        owner: true
+      });
+      savePosts(posts);
+      renderPosts();
+    };
 
     if (file) reader.readAsDataURL(file);
     else {
       const posts = getPosts();
       posts.unshift({
-       username: userProfile.name || "You",
-        userImg: yourProfile,
+        username: userProfile.name || "You",
+        userImg: userProfile.image || "https://i.pravatar.cc/100",
         img: "",
         caption,
         likes: 0,
         liked: false,
         comments: [],
-        owner: true // 👈 Mark as user's post
+        owner: true
       });
       savePosts(posts);
       renderPosts();
@@ -434,61 +411,11 @@
 
   function deletePost(i) {
     const posts = getPosts();
-    if (posts[i].owner) {
-      if (confirm("Are you sure you want to delete this post?")) {
-        posts.splice(i, 1);
-        savePosts(posts);
-        renderPosts();
-      }
-    } else {
-      alert("You can't delete this post.");
+    if (posts[i].owner && confirm("Are you sure you want to delete this post?")) {
+      posts.splice(i, 1);
+      savePosts(posts);
+      renderPosts();
     }
-  }
-
-  // Set sample posts with owner = false
-  if (!localStorage.getItem("posts")) {
-    savePosts([
-      {
-        username: "farmer_ravi",
-        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcCkHTRXBt_IfyYL6rkwNzNlSKLeVkisKLcg&s",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdYPYvy4LeRO-fCKG2OYtoPTJ2HKyKgk8Ezw&s",
-        caption: "Wheat field ready for harvest 🌾",
-        likes: 0,
-        liked: false,
-        comments: [],
-        owner: false
-      },
-      {
-        username: "organic_kisan",
-        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW7dn2JurmQc-aEjo2zej01-frVTbgZ04JGQ&s",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_sAoFlybyAVhZsep6XdyHSYI9-q8UQELqUg&s",
-        caption: "Fresh desi tomatoes from organic farm 🍅",
-        likes: 0,
-        liked: false,
-        comments: [],
-        owner: false
-      },
-      {
-        username: "green_grower",
-        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpy_6i4HFS5_K2Yv_fVw_vXx9lmlCJhMkHSg&s",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8430T_BS2XZsERGCA4Ru-XUoHEq1T2E1su0ViyvVy4sVQwvIwGwUdU8qeaiMNoOkHn90&usqp=CAU",
-        caption: "Irrigation system in action 🚿🌱",
-        likes: 0,
-        liked: false,
-        comments: [],
-        owner: false
-      },
-      {
-        username: "desi_farmer",
-        userImg: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLCSB9VoaHQiGyUIN_th2_4__TRlRmrMYCdQ&s",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNqsu78nPcrSizylrLdOHmoBzKWl3HTeWY4Q&s",
-        caption: "My bulls working hard in the field 🐂❤️",
-        likes: 0,
-        liked: false,
-        comments: [],
-        owner: false
-      }
-    ]);
   }
 
   renderPosts();

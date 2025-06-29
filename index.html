@@ -2,485 +2,503 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GroVia - Grow Farm Via Us</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroVia - Grow Farm Via Us</title>
 
-    <!-- 
+  <!-- 
     - favicon
   -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-    <!-- 
+  <!-- 
     - custom css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- 
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- 
     - google font link
   -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
 
-    <!-- 
+  <!-- 
     - preload banner
   -->
-    <link rel="preload" href="./assets/images/hero-banner.png" as="image">
-    <style>
-        .search-box {
-            width: 95%;
-            padding: 12px 18px;
-            font-size: 1rem;
-            border: 2px solid #e0d9cd;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        
-        .crop-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1.5rem;
-            padding: 20px;
-            justify-items: center;
-        }
-        
-        .crop-card {
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: 0.3s ease;
-            overflow: hidden;
-            width: 220px;
-        }
-        
-        .crop-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .crop-card .image-container {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 1rem auto 0;
-            border: 3px solid #3bb143;
-        }
-        
-        .crop-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .crop-card-body {
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        .crop-card-body h2 {
-            margin: 0.5rem 0;
-            font-size: 1.2rem;
-            color: #3b3b3b;
-        }
-        
-        .crop-card-body p {
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
-            color: #555;
-        }
-        
-        .crop-link {
-            text-decoration: none;
-        }
-        /* === General Section Styling === */
-        
-        .toolbox-section {
-            background: #f0fdf2;
-            padding: 3rem 1rem;
-            border-top: 4px solid #3bb143;
-            font-family: 'Josefin Sans', sans-serif;
-        }
-        
-        .toolbox-section h2 {
-            text-align: center;
-            color: #2e7d32;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-        /* === Responsive Grid Layout === */
-        
-        .toolbox-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 30px;
-        }
-        /* Force exactly 2 cards per row on larger screens */
-        
-        @media (min-width: 601px) {
-            .toolbox-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        /* Stack cards on smaller screens */
-        
-        @media (max-width: 600px) {
-            .toolbox-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* === Card Base Style === */
-        
-        .toolbox-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            width: 100%;
-        }
-        
-        .toolbox-card:hover {
-            transform: scale(1.03);
-        }
-        
-        .toolbox-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-        }
-        
-        .card-content {
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        .card-content h3 {
-            color: #3bb143;
-            margin-top: 0;
-        }
-        /* === Special Colored Cards === */
-        
-        .card-yellow {
-            background: #fffbe7;
-        }
-        
-        .card-yellow h3 {
-            color: #f9a825;
-        }
-        
-        .card-blue {
-            background: #e3f2fd;
-        }
-        
-        .card-blue h3 {
-            color: #1976d2;
-        }
-        /* === Buttons === */
-        
-        .toolbox-button {
-            background: #3bb143;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        
-        .button-blue {
-            background: #1976d2;
-        }
-        
-        .button-yellow {
-            background: #f9a825;
-        }
-        /* === Seed Calculator Card === */
-        
-        #seedCalculatorCard {
-            background: #fdfefe;
-            border-radius: 20px;
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            padding: 1.5rem;
-            width: 100%;
-        }
-        
-        #seedCalculatorCard h3 {
-            color: #3bb143;
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        #seedCalculatorCard label,
-        #seedCalculatorCard select,
-        #seedCalculatorCard input {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-        
-        #seedCalculatorCard select,
-        #seedCalculatorCard input {
-            padding: 0.5rem;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-        
-        #seedCalculatorCard button {
-            background: #3bb143;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-        
-        #seedResult {
-            font-weight: bold;
-            color: #2e7d32;
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+<style>
+.search-box {
+      width: 95%;
+      padding: 12px 18px;
+      font-size: 1rem;
+      border: 2px solid #e0d9cd;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+
+    .crop-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      padding: 20px;
+      justify-items: center;
+    }
+
+    .crop-card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+      overflow: hidden;
+      width: 220px;
+    }
+
+    .crop-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .crop-card .image-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 1rem auto 0;
+      border: 3px solid #3bb143;
+    }
+
+    .crop-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .crop-card-body {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .crop-card-body h2 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      color: #3b3b3b;
+    }
+
+    .crop-card-body p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .crop-link {
+      text-decoration: none;
+    }
+
+/* === General Section Styling === */
+.toolbox-section {
+  background: #f0fdf2;
+  padding: 3rem 1rem;
+  border-top: 4px solid #3bb143;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.toolbox-section h2 {
+  text-align: center;
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* === Responsive Grid Layout === */
+.toolbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+/* Force exactly 2 cards per row on larger screens */
+@media (min-width: 601px) {
+  .toolbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Stack cards on smaller screens */
+@media (max-width: 600px) {
+  .toolbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Card Base Style === */
+.toolbox-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.toolbox-card:hover {
+  transform: scale(1.03);
+}
+
+.toolbox-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-content h3 {
+  color: #3bb143;
+  margin-top: 0;
+}
+
+/* === Special Colored Cards === */
+.card-yellow {
+  background: #fffbe7;
+}
+
+.card-yellow h3 {
+  color: #f9a825;
+}
+
+.card-blue {
+  background: #e3f2fd;
+}
+
+.card-blue h3 {
+  color: #1976d2;
+}
+
+/* === Buttons === */
+.toolbox-button {
+  background: #3bb143;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.button-blue {
+  background: #1976d2;
+}
+
+.button-yellow {
+  background: #f9a825;
+}
+
+/* === Seed Calculator Card === */
+#seedCalculatorCard {
+  background: #fdfefe;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+#seedCalculatorCard h3 {
+  color: #3bb143;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#seedCalculatorCard label,
+#seedCalculatorCard select,
+#seedCalculatorCard input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+#seedCalculatorCard select,
+#seedCalculatorCard input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#seedCalculatorCard button {
+  background: #3bb143;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+#seedResult {
+  font-weight: bold;
+  color: #2e7d32;
+  text-align: center;
+  margin-top: 10px;
+}
+
+</style>
 </head>
 
 <body id="top">
 
-    <!-- 
+  <!-- 
     - #HEADER
   -->
 
-    <header class="header" data-header>
-        <div class="container">
+  <header class="header" data-header>
+    <div class="container">
 
-            <!-- Overlay for mobile nav -->
-            <div class="overlay" data-overlay></div>
+      <div class="overlay" data-overlay></div>
 
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia Logo">
-            </a>
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
+      </a>
 
-            <!-- Hamburger button -->
-            <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
-      <ion-icon name="menu-outline"></ion-icon>
-    </button>
-
-            <!-- Main navigation -->
-            <nav class="navbar" data-navbar>
-
-                <!-- Close button for mobile nav -->
-                <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
-        <ion-icon name="close-outline"></ion-icon>
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
       </button>
 
-                <!-- Logo inside nav (optional, mostly for mobile) -->
-                <a href="index.html" class="logo">
-                    <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia Logo">
-                </a>
+      <nav class="navbar" data-navbar>
 
-                <!-- Navigation links -->
-                <ul class="navbar-list">
-                    <li class="navbar-item"><a href="index.html" class="navbar-link">Crop Details</a></li>
-                    <li class="navbar-item"><a href="ferti.html" class="navbar-link">Ferti Tips</a></li>
-                    <li class="navbar-item"><a href="product.html" class="navbar-link">Hardware</a></li>
-                    <li class="navbar-item"><a href="fertibuy.html" class="navbar-link">Fertilizer's</a></li>
-                    <li class="navbar-item"><a href="gov.html" class="navbar-link">Gov Stuff's</a></li>
-                    <li class="navbar-item"><a href="post.html" class="navbar-link">Community</a></li>
-                </ul>
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
 
-                <!-- User actions -->
-                <ul class="nav-action-list">
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
+        </a>
 
-                    <!-- Search icon -->
-                    <li>
-                        <button class="nav-action-btn" aria-label="Search">
-            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-            <span class="nav-action-text">Search</span>
-          </button>
-                    </li>
+        <ul class="navbar-list">
 
-                    <!-- Login / Register (optional) -->
-                    <li>
-                        <a href="login.html" class="nav-action-btn">
-                            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-                            <span class="nav-action-text">Login / Register</span>
-                        </a>
-                    </li>
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Crop Details </a>
+          </li>
 
-                    <!-- Logout -->
-                    <li>
-                        <button class="nav-action-btn" id="logoutBtn">
-            <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
-            <span class="nav-action-text">Logout</span>
-          </button>
-                    </li>
+          <li class="navbar-item">
+            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
+          </li>
 
-                    <!-- Welcome & Address -->
-                    <li class="nav-action-btn" style="flex-direction: column; align-items: flex-start;">
-                        <span class="nav-action-text" id="welcomeMsg" style="color: #0066cc;"></span>
-                        <small id="address" style="color: #333;"></small>
-                    </li>
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Farming HardWare</a>
+          </li>
 
-                </ul>
-            </nav>
-        </div>
-    </header>
+          <li class="navbar-item">
+            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
+          </li>
 
+          <li class="navbar-item">
+            <a href="gov.html" class="navbar-link">Government Stuff's</a>
+          </li>
 
-    <main class="content">
-        <input type="text" placeholder="Search crops..." class="search-box" />
-        <section class="crop-cards">
+          <li class="navbar-item">
+                <a href="post.html" class="navbar-link"> Community</a>
+          </li>
+        </ul>
 
-            <a href="rice.html" class="crop-link">
-                <div class="crop-card" data-name="rice">
-                    <div class="image-container">
-                        <img src="https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg" alt="Rice" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Rice</h2>
-                        <p><strong>Season:</strong> Kharif</p>
-                    </div>
-                </div>
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
             </a>
+          </li>
 
-            <a href="wheat.html" class="crop-link">
-                <div class="crop-card" data-name="wheat">
-                    <div class="image-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3RHATUPsiPHDoc4imUWTQ3OXsRIOYZbNsMBZM_tIOnHxypoXxRYPToCdwDqOxINx-c9U&usqp=CAU" alt="Wheat" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Wheat</h2>
-                        <p><strong>Season:</strong> Rabi</p>
-                    </div>
-                </div>
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text" id="logoutBtn">Logout</span>
             </a>
+          </li>
 
-            <a href="soya.html" class="crop-link">
-                <div class="crop-card" data-name="soybean">
-                    <div class="image-container">
-                        <img src="https://e.saravanaonline.com/4853-large_default/soya-bean-seeds-500-gm.jpg" alt="Soybean" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Soybean</h2>
-                    </div>
-                </div>
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <summary class="nav-action-text" id="logoutBtn">Account
+              <p id="welcomeMsg" style="color: blue;"></p></summary>
             </a>
+          </li>
 
-            <a href="Bajara.html" class="crop-link">
-                <div class="crop-card" data-name="bajra">
-                    <div class="image-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt4LL6JQxKfdgZ1awXRwl9ydkihyHFJ4ESZQ&s" alt="Bajra" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Bajra</h2>
-                        <p><strong>Season:</strong> Kharif</p>
-                    </div>
-                </div>
-            </a>
+        </ul>
 
-            <a href="cotton.html" class="crop-link">
-                <div class="crop-card" data-name="cotton">
-                    <div class="image-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-y3NIkbkDWGvnaR7c6m2bejtRyb837P3vA&s" alt="Cotton" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Cotton</h2>
-                        <p><strong>Season:</strong> Kharif</p>
-                    </div>
-                </div>
-            </a>
-            <a href="" class="crop-link">
-                <div class="crop-card" data-name="wheat">
-                    <div class="image-container">
-                        <img src="https://media.istockphoto.com/id/841408966/photo/corn-on-the-cob-kernels-peeled-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=v76mGkmlRYhLo98AMVQbpCpYwDc-1OGv7pI96aHc8zA=" alt="Maize" />
-                    </div>
-                    <div class="crop-card-body">
-                        <h2>Wheat</h2>
-                        <p><strong>Season:</strong> Rabi</p>
-                    </div>
-                </div>
-            </a>
+      </nav>
 
-        </section>
+    </div>
+  </header>
+  
+  <main class="content">
+ <input type="text" placeholder="Search crops..." class="search-box" />
+ <section class="crop-cards">
 
-        <section class="toolbox-section">
-            <h2>🧑‍🌾 Farmer's Smart Toolbox</h2>
+  <a href="rice.html" class="crop-link">
+    <div class="crop-card" data-name="rice">
+      <div class="image-container">
+        <img src="https://cdn.britannica.com/17/176517-050-6F2B774A/Pile-uncooked-rice-grains-Oryza-sativa.jpg" alt="Rice" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Rice</h2>
+        <p><strong>Season:</strong> Kharif</p>
+      </div>
+    </div>
+  </a>
 
-            <div class="toolbox-grid">
-                <!-- Crop Tracker -->
-                <div class="toolbox-card">
-                    <img src="https://img.freepik.com/free-vector/farming-infographic-template_1284-12984.jpg" alt="Crop Tracker">
-                    <div class="card-content">
-                        <h3>🌱 Crop Stage Tracker</h3>
-                        <p>Current: Sowing</p>
-                        <p>Next: Apply Urea in 3 days</p>
-                        <progress value="40" max="100" style="width:100%; height: 10px;"></progress>
-                    </div>
-                </div>
+  <a href="wheat.html" class="crop-link">
+    <div class="crop-card" data-name="wheat">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3RHATUPsiPHDoc4imUWTQ3OXsRIOYZbNsMBZM_tIOnHxypoXxRYPToCdwDqOxINx-c9U&usqp=CAU" alt="Wheat" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Wheat</h2>
+        <p><strong>Season:</strong> Rabi</p>
+      </div>
+    </div>
+  </a>
 
-                <!-- Weather -->
-                <div class="toolbox-card">
-                    <img src="https://img.freepik.com/free-vector/weather-concept-illustration_114360-1254.jpg" alt="Weather">
-                    <div class="card-content">
-                        <h3>🌦️ Live Weather</h3>
-                        <p>Get local rain and humidity alerts</p>
-                        <button onclick="location.href='weather.html'" class="toolbox-button">Check Weather</button>
-                    </div>
-                </div>
+  <a href="soya.html" class="crop-link">
+    <div class="crop-card" data-name="soybean">
+      <div class="image-container">
+        <img src="https://e.saravanaonline.com/4853-large_default/soya-bean-seeds-500-gm.jpg" alt="Soybean" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Soybean</h2>
+      </div>
+    </div>
+  </a>
 
-                <!-- Mandi Rates -->
-                <div class="toolbox-card">
-                    <img src="https://img.freepik.com/free-vector/marketplace-concept-illustration_114360-3023.jpg" alt="Mandi Rates">
-                    <div class="card-content">
-                        <h3>📈 Mandi Rates</h3>
-                        <p>Check today's crop prices</p>
-                        <button onclick="location.href=''" class="toolbox-button">View Prices</button>
-                    </div>
-                </div>
+  <a href="bajara.html" class="crop-link">
+    <div class="crop-card" data-name="bajra">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt4LL6JQxKfdgZ1awXRwl9ydkihyHFJ4ESZQ&s" alt="Bajra" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Bajra</h2>
+        <p><strong>Season:</strong> Kharif</p>
+      </div>
+    </div>
+  </a>
 
-                <!-- Buy Inputs -->
-                <div class="toolbox-card">
-                    <img src="https://img.freepik.com/free-vector/agriculture-products-promotion-banner_23-2148624707.jpg" alt="Buy Inputs">
-                    <div class="card-content">
-                        <h3>🛒 Buy Inputs</h3>
-                        <p>Seeds, fertilizers, tools</p>
-                        <button onclick="location.href='fertibuy.html'" class="toolbox-button">Shop Now</button>
-                    </div>
-                </div>
+  <a href="cotton.html" class="crop-link">
+    <div class="crop-card" data-name="cotton">
+      <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-y3NIkbkDWGvnaR7c6m2bejtRyb837P3vA&s" alt="Cotton" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Cotton</h2>
+        <p><strong>Season:</strong> Kharif</p>
+      </div>
+    </div>
+  </a>
+  <a href="" class="crop-link">
+    <div class="crop-card" data-name="wheat">
+      <div class="image-container">
+        <img src="https://media.istockphoto.com/id/841408966/photo/corn-on-the-cob-kernels-peeled-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=v76mGkmlRYhLo98AMVQbpCpYwDc-1OGv7pI96aHc8zA=" alt="Maize" />
+      </div>
+      <div class="crop-card-body">
+        <h2>Wheat</h2>
+        <p><strong>Season:</strong> Rabi</p>
+      </div>
+    </div>
+  </a>
 
-                <!-- Tip of the Day -->
-                <div class="toolbox-card card-yellow" style="background: #fffbe7;">
-                    <img src="https://img.freepik.com/free-vector/informative-idea-concept-illustration_114360-2612.jpg" alt="Tips">
-                    <div class="card-content">
-                        <h3>💡 Tip of the Day</h3>
-                        <p>"Apply organic compost before sowing for better yield."</p>
-                    </div>
-                </div>
+</section>
 
-                <!-- Community Help -->
-                <div class="toolbox-card card-blue" style="background: #e3f2fd;">
-                    <img src="https://img.freepik.com/free-vector/community-concept-illustration_114360-3955.jpg" alt="Community">
-                    <div class="card-content">
-                        <h3>👥 Community Help</h3>
-                        <p>Ask questions & get expert help</p>
-                        <button onclick="location.href=''" class="toolbox-button button-blue">Join Now</button>
-                    </div>
-                </div>
+<section class="toolbox-section">
+  <h2>🧑‍🌾 Farmer's Smart Toolbox</h2>
 
-                <!-- Seed Calculator -->
-                <div id="seedCalculatorCard">
-                    <h3>🌾 Advanced Seed Requirement Calculator</h3>
-                    <label for="seedCrop">Select Crop:</label>
-                    <select id="seedCrop">
+  <div class="toolbox-grid">
+    <!-- Crop Tracker -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/farming-infographic-template_1284-12984.jpg" alt="Crop Tracker">
+      <div class="card-content">
+        <h3>🌱 Crop Stage Tracker</h3>
+        <p>Current: Sowing</p>
+        <p>Next: Apply Urea in 3 days</p>
+        <progress value="40" max="100" style="width:100%; height: 10px;"></progress>
+      </div>
+    </div>
+
+    <!-- Weather -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/weather-concept-illustration_114360-1254.jpg" alt="Weather">
+      <div class="card-content">
+        <h3>🌦️ Live Weather</h3>
+        <p>Get local rain and humidity alerts</p>
+        <button onclick="location.href='weather.html'" class="toolbox-button">Check Weather</button>
+      </div>
+    </div>
+
+    <!-- Mandi Rates -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/marketplace-concept-illustration_114360-3023.jpg" alt="Mandi Rates">
+      <div class="card-content">
+        <h3>📈 Mandi Rates</h3>
+        <p>Check today's crop prices</p>
+        <button onclick="location.href=''" class="toolbox-button">View Prices</button>
+      </div>
+    </div>
+
+    <!-- Buy Inputs -->
+    <div class="toolbox-card">
+      <img src="https://img.freepik.com/free-vector/agriculture-products-promotion-banner_23-2148624707.jpg" alt="Buy Inputs">
+      <div class="card-content">
+        <h3>🛒 Buy Inputs</h3>
+        <p>Seeds, fertilizers, tools</p>
+        <button onclick="location.href='fertibuy.html'" class="toolbox-button">Shop Now</button>
+      </div>
+    </div>
+
+    <!-- Tip of the Day -->
+    <div class="toolbox-card card-yellow" style="background: #fffbe7;">
+      <img src="https://img.freepik.com/free-vector/informative-idea-concept-illustration_114360-2612.jpg" alt="Tips">
+      <div class="card-content">
+        <h3>💡 Tip of the Day</h3>
+        <p>"Apply organic compost before sowing for better yield."</p>
+      </div>
+    </div>
+
+    <!-- Community Help -->
+    <div class="toolbox-card card-blue" style="background: #e3f2fd;">
+      <img src="https://img.freepik.com/free-vector/community-concept-illustration_114360-3955.jpg" alt="Community">
+      <div class="card-content">
+        <h3>👥 Community Help</h3>
+        <p>Ask questions & get expert help</p>
+        <button onclick="location.href=''" class="toolbox-button button-blue">Join Now</button>
+      </div>
+    </div>
+
+    <!-- Seed Calculator -->
+    <div id="seedCalculatorCard">
+      <h3>🌾 Advanced Seed Requirement Calculator</h3>
+      <label for="seedCrop">Select Crop:</label>
+      <select id="seedCrop">
         <option value="rice">Rice</option>
         <option value="wheat">Wheat</option>
         <option value="soybean">Soybean</option>
@@ -492,103 +510,103 @@
         <option value="mustard">Mustard</option>
       </select>
 
-                    <label for="areaUnit">Select Area Unit:</label>
-                    <select id="areaUnit">
+      <label for="areaUnit">Select Area Unit:</label>
+      <select id="areaUnit">
         <option value="acre">Acre</option>
         <option value="hectare">Hectare</option>
         <option value="bigha">Bigha</option>
       </select>
 
-                    <label for="seedArea">Enter Area:</label>
-                    <input type="number" id="seedArea" placeholder="e.g. 2.5">
+      <label for="seedArea">Enter Area:</label>
+      <input type="number" id="seedArea" placeholder="e.g. 2.5">
 
-                    <button onclick="calculateSeed()">Calculate</button>
-                    <p id="seedResult"></p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-
-
-    <div class="bottom-nav">
-        <a href="index.html">
-            <ion-icon name="home-outline"></ion-icon>
-            <span>Home</span>
-        </a>
-        <a href="product.html">
-            <ion-icon name="pricetags-outline"></ion-icon>
-            <span>Products</span>
-        </a>
-        <a href="post.html">
-            <ion-icon name="Add"></ion-icon>
-            <span> Post</span>
-        </a>
-        <a href="tem.html">
-            <ion-icon name="partly-sunny-outline"></ion-icon>
-            <span>Temparature</span>
-        </a>
-        <a href="contact.html">
-            <ion-icon name="call-outline"></ion-icon>
-            <span>Contact</span>
-        </a>
+      <button onclick="calculateSeed()">Calculate</button>
+      <p id="seedResult"></p>
     </div>
+  </div>
+</section>
+    
+  </main>
 
 
-    <!-- 
+
+ <div class="bottom-nav">
+    <a href="index.html">
+      <ion-icon name="home-outline"></ion-icon>
+      <span>Home</span>
+    </a>
+    <a href="product.html">
+      <ion-icon name="pricetags-outline"></ion-icon>
+      <span>Products</span>
+    </a>
+    <a href="post.html">
+      <ion-icon name="Add"></ion-icon>
+      <span> Post</span>
+    </a>
+    <a href="tem.html">
+      <ion-icon name="partly-sunny-outline"></ion-icon>
+      <span>Temparature</span>
+    </a>
+    <a href="contact.html">
+      <ion-icon name="call-outline"></ion-icon>
+      <span>Contact</span>
+    </a>
+  </div>
+
+  
+  <!-- 
     - #GO TO TOP
   -->
 
-    <a href="#top" class="go-top-btn" data-go-top>
-        <ion-icon name="arrow-up-outline"></ion-icon>
-    </a>
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
 
 
 
 
 
-    <!-- 
+  <!-- 
     - custom js link
   -->
-    <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 
-    <!-- 
+  <!-- 
     - ionicon link
   -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-        function calculateSeed() {
-            const crop = document.getElementById("seedCrop").value;
-            const unit = document.getElementById("areaUnit").value;
-            let area = parseFloat(document.getElementById("seedArea").value);
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+      function calculateSeed() {
+        const crop = document.getElementById("seedCrop").value;
+        const unit = document.getElementById("areaUnit").value;
+        let area = parseFloat(document.getElementById("seedArea").value);
 
-            if (isNaN(area) || area <= 0) {
-                document.getElementById("seedResult").innerText = "❌ Please enter a valid area.";
-                return;
-            }
-
-            // Convert area to acres if needed
-            if (unit === "hectare") area *= 2.47105;
-            if (unit === "bigha") area *= 0.619;
-
-            const seedRates = {
-                rice: 20,
-                wheat: 50,
-                soybean: 30,
-                bajra: 5,
-                cotton: 2,
-                maize: 18,
-                groundnut: 80,
-                gram: 45,
-                mustard: 4
-            };
-
-            const totalSeed = (seedRates[crop] || 0) * area;
-            document.getElementById("seedResult").innerText = `🌾 You need approx. ${totalSeed.toFixed(2)} kg of ${crop} seeds for ${area.toFixed(2)} acre(s).`;
+        if (isNaN(area) || area <= 0) {
+          document.getElementById("seedResult").innerText = "❌ Please enter a valid area.";
+          return;
         }
-    </script>
+
+        // Convert area to acres if needed
+        if (unit === "hectare") area *= 2.47105;
+        if (unit === "bigha") area *= 0.619;
+
+        const seedRates = {
+          rice: 20,
+          wheat: 50,
+          soybean: 30,
+          bajra: 5,
+          cotton: 2,
+          maize: 18,
+          groundnut: 80,
+          gram: 45,
+          mustard: 4
+        };
+
+        const totalSeed = (seedRates[crop] || 0) * area;
+        document.getElementById("seedResult").innerText = `🌾 You need approx. ${totalSeed.toFixed(2)} kg of ${crop} seeds for ${area.toFixed(2)} acre(s).`;
+      }
+</script>
 </body>
 
 </html>

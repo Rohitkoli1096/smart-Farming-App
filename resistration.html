@@ -58,18 +58,15 @@
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 10px;
+      margin-right: 10px;
     }
 
-    .input-group input{
+    .input-group input {
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 10px;
       width: 100%;
-    }
-
-    .input-group select {
-      margin-right: 10px;
     }
 
     .tip {
@@ -114,6 +111,60 @@
       font-style: italic;
       cursor: pointer;
     }
+
+    /* Modal Alert Styles */
+    #customAlert {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+    }
+
+    .modal-box {
+      background: white;
+      padding: 24px 30px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 90%;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.3s ease;
+    }
+
+    .modal-box p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .modal-box button {
+      padding: 10px 20px;
+      background-color: #0033cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .modal-box button:hover {
+      background-color: #0022aa;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -130,17 +181,18 @@
 
   <main>
     <h2>Welcome to Gramophone</h2>
-    <label for="mobile">Enter Mobile Number</label>
 
+    <label for="mobile">Enter Mobile Number</label>
     <div class="input-group">
       <select id="countryCode">
         <option value="+91" selected>🇮🇳 +91</option>
       </select>
-      <input type="tel" id="name" placeholder="Enter Mobile Number" maxlength="10" />
+      <input type="tel" id="mobile" placeholder="Enter Mobile Number" maxlength="10" />
     </div>
 
+    <label for="name">Enter Your Name</label>
     <div class="input-group">
-      <input type="text" id="mobile" placeholder="Enter Name"/>
+      <input type="text" id="name" placeholder="Enter Name"/>
     </div>
 
     <div class="tip">TIP: Use your WhatsApp number for notification</div>
@@ -154,18 +206,49 @@
     <div class="btn" onclick="saveNumber()">Continue</div>
   </main>
 
+  <!-- Custom Modal Alert -->
+  <div id="customAlert">
+    <div class="modal-box">
+      <p id="modalMessage">This is a custom alert.</p>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+  </div>
+
   <script>
+    function showAlert(message, callback) {
+      document.getElementById("modalMessage").innerText = message;
+      document.getElementById("customAlert").style.display = 'flex';
+      window._alertCallback = callback;
+    }
+
+    function closeAlert() {
+      document.getElementById("customAlert").style.display = 'none';
+      if (typeof window._alertCallback === 'function') {
+        window._alertCallback();
+        window._alertCallback = null;
+      }
+    }
+
     function saveNumber() {
       const mobile = document.getElementById('mobile').value.trim();
       const code = document.getElementById('countryCode').value;
-      const name = document.getElementById('name').value;
-      if (name.length !== 10 || isNaN(name)) {
-        alert("Please enter a valid 10-digit mobile number.");
+      const name = document.getElementById('name').value.trim();
+
+      if (mobile.length !== 10 || isNaN(mobile)) {
+        showAlert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      if (name.length < 2) {
+        showAlert("Please enter a valid name.");
         return;
       }
 
       localStorage.setItem("userMobile", code + mobile);
-      window.location.href = "index.html"; // Go to next page
+      localStorage.setItem("userName", name);
+      localStorage.setItem("userProfile", JSON.stringify({ name, mobile: code + mobile }));
+
+      window.location.href = "index.html"; // or wherever you want to go next
     }
   </script>
 

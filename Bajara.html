@@ -196,97 +196,58 @@ main h1 {
     - #HEADER
   -->
 
-  <header class="header" data-header>
-    <div class="container">
-
-      <div class="overlay" data-overlay></div>
-
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia logo">
-      </a>
-
-      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
-        <ion-icon name="menu-outline"></ion-icon>
+  <!-- header.html -->
+<header class="header" data-header>
+  <div class="container">
+    <div class="overlay" data-overlay></div>
+    <a href="index.html" class="logo">
+      <img src="./assets/images/logo.png" width="160" height="50" alt="GroVia Logo">
+    </a>
+    <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <nav class="navbar" data-navbar>
+      <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+        <ion-icon name="close-outline"></ion-icon>
       </button>
-
-      <nav class="navbar" data-navbar>
-
-        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia logo">
-        </a>
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <a href="index.html" class="navbar-link">Crop Details </a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="ferti.html" class="navbar-link">Fertilization Tips</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="product.html" class="navbar-link">Farming HardWare</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="gov.html" class="navbar-link">Government Stuff's</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="" class="navbar-link">Contact</a>
-          </li>
-        </ul>
-
-        <ul class="nav-action-list">
-
-          <li>
-            <button class="nav-action-btn">
-              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-
-              <span class="nav-action-text">Search</span>
-            </button>
-          </li>
-
-          <li>
-            <a href="#" class="nav-action-btn">
-              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
-              <span class="nav-action-text">Login / Register</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="nav-action-btn">
-              <ion-icon name="Log-out-outline" aria-hidden="true"></ion-icon>
-
-              <span class="nav-action-text" id="logoutBtn">Logout</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="nav-action-btn">
-              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
-              <summary class="nav-action-text" id="logoutBtn">Account
-              <p id="welcomeMsg" style="color: blue;"></p></summary>
-            </a>
-          </li>
-
-        </ul>
-
-      </nav>
-
-    </div>
-  </header>
+      <a href="index.html" class="logo">
+        <img src="./assets/images/logo.png" width="190" height="50" alt="GroVia Logo">
+      </a>
+      <ul class="navbar-list">
+        <li class="navbar-item"><a href="index.html" class="navbar-link">Crop Details</a></li>
+        <li class="navbar-item"><a href="ferti.html" class="navbar-link">Fertilization Tips</a></li>
+        <li class="navbar-item"><a href="product.html" class="navbar-link">Farming Hardware</a></li>
+        <li class="navbar-item"><a href="fertibuy.html" class="navbar-link">Farming Fertilizer</a></li>
+        <li class="navbar-item"><a href="gov.html" class="navbar-link">Government Stuff's</a></li>
+        <li class="navbar-item"><a href="post.html" class="navbar-link">Community</a></li>
+      </ul>
+      <ul class="nav-action-list">
+        <li>
+          <button class="nav-action-btn" aria-label="Search">
+            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            <span class="nav-action-text">Search</span>
+          </button>
+        </li>
+        <li>
+          <a href="login.html" class="nav-action-btn">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+            <span class="nav-action-text">Login / Register</span>
+          </a>
+        </li>
+        <li>
+          <button class="nav-action-btn" id="logoutBtn">
+            <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+            <span class="nav-action-text">Logout</span>
+          </button>
+        </li>
+        <li class="nav-action-btn" style="flex-direction: column; align-items: flex-start;">
+          <span class="nav-action-text" id="welcomeMsg" style="color: #0066cc;"></span>
+          <small id="address" style="color: #333;"></small>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <main>
     <h1>Rice Farming Guide</h1>

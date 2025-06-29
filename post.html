@@ -309,7 +309,7 @@
     reader.onload = function (e) {
       const posts = getPosts();
       posts.unshift({
-          username: localStorage.getItem("userProfile.name") || "You",
+          username: userProfile.name || "You",
         userImg: yourProfile,
         img: file ? e.target.result : "",
         caption,
@@ -326,7 +326,7 @@
     else {
       const posts = getPosts();
       posts.unshift({
-       username: localStorage.getItem("userProfile.name") || "You",
+       username: userProfile.name || "You",
         userImg: yourProfile,
         img: "",
         caption,

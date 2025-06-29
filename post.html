@@ -326,7 +326,7 @@
     else {
       const posts = getPosts();
       posts.unshift({
-        username: "you",
+       username: localStorage.getItem("") || "You",
         userImg: yourProfile,
         img: "",
         caption,

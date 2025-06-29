@@ -73,6 +73,7 @@ if (!currentUserMobile) {
       addressData.tehsil,
       addressData.district,
       addressData.state,
+      addressData.pincode,
     ].filter(Boolean); // remove empty or undefined parts
 
     document.getElementById("address").textContent = parts.join(", ");

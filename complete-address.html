@@ -110,10 +110,6 @@
       height: 30px;
     }
 
-    .logo strong {
-      color: #003399;
-    }
-
     .header-btns {
       display: flex;
       gap: 10px;
@@ -125,6 +121,60 @@
       border-radius: 12px;
       font-size: 14px;
       border: 1px solid #ddd;
+    }
+
+    /* Modal Alert Styles */
+    #customAlert {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+    }
+
+    .modal-box {
+      background: white;
+      padding: 24px 30px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 90%;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.3s ease;
+    }
+
+    .modal-box p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .modal-box button {
+      padding: 10px 20px;
+      background-color: #0033cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .modal-box button:hover {
+      background-color: #0022aa;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -179,6 +229,14 @@
 
   <div class="footer-btn" onclick="submitAddress()">Continue</div>
 
+  <!-- Custom Modal Alert -->
+  <div id="customAlert">
+    <div class="modal-box">
+      <p id="modalMessage">This is a custom alert message.</p>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+  </div>
+
   <script>
     const state = localStorage.getItem("selectedStateName") || "Select State";
     const stateImage = localStorage.getItem("selectedStateImage") || "";
@@ -187,7 +245,21 @@
     document.getElementById("stateImage").src = stateImage;
 
     function changeState() {
-      window.location.href = "stateSelect.html";
+      window.location.href = "stateselect.html";
+    }
+
+    function showAlert(message, callback) {
+      document.getElementById("modalMessage").innerText = message;
+      document.getElementById("customAlert").style.display = 'flex';
+      window._alertCallback = callback;
+    }
+
+    function closeAlert() {
+      document.getElementById("customAlert").style.display = 'none';
+      if (typeof window._alertCallback === 'function') {
+        window._alertCallback();
+        window._alertCallback = null;
+      }
     }
 
     function submitAddress() {
@@ -198,7 +270,7 @@
       const pincode = document.getElementById("pincode").value.trim();
 
       if (!district || !tehsil) {
-        alert("Please fill in required fields.");
+        showAlert("Please fill in required fields (District and Tehsil).");
         return;
       }
 
@@ -211,6 +283,7 @@
         pincode,
         stateImage
       };
+
       localStorage.setItem("userAddress", JSON.stringify(fullAddress));
       window.location.href = "resistration.html";
     }

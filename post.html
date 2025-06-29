@@ -301,26 +301,49 @@
   }
 
   function createPost() {
-    const caption = document.getElementById("newCaption").value.trim();
-    const file = document.getElementById("newImage").files[0];
-    if (!caption && !file) return alert("Please add text or image.");
+  const caption = document.getElementById("newCaption").value.trim();
+  const file = document.getElementById("newImage").files[0];
+  const userProfile = JSON.parse(localStorage.getItem("userProfile") || "{}");
 
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const posts = getPosts();
-      posts.unshift({
-          username: userProfile.name || "You",
-        userImg: yourProfile,
-        img: file ? e.target.result : "",
-        caption,
-        likes: 0,
-        liked: false,
-        comments: [],
-        owner: true // 👈 Mark as user's post
-      });
-      savePosts(posts);
-      renderPosts();
-    };
+  if (!caption && !file) return alert("Please add text or image.");
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const posts = getPosts();
+    posts.unshift({
+      username: userProfile.name || "You",
+      userImg: userProfile.image || "https://i.pravatar.cc/100",
+      img: file ? e.target.result : "",
+      caption,
+      likes: 0,
+      liked: false,
+      comments: [],
+      owner: true
+    });
+    savePosts(posts);
+    renderPosts();
+  };
+
+  if (file) reader.readAsDataURL(file);
+  else {
+    const posts = getPosts();
+    posts.unshift({
+      username: userProfile.name || "You",
+      userImg: userProfile.image || "https://i.pravatar.cc/100",
+      img: "",
+      caption,
+      likes: 0,
+      liked: false,
+      comments: [],
+      owner: true
+    });
+    savePosts(posts);
+    renderPosts();
+  }
+
+  document.getElementById("newCaption").value = "";
+  document.getElementById("newImage").value = "";
+}
 
     if (file) reader.readAsDataURL(file);
     else {

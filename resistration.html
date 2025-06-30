@@ -194,6 +194,10 @@
     <div class="input-group">
       <input type="text" id="name" placeholder="Enter Name"/>
     </div>
+        <label for="pic">Upload Profile Picture</label>
+    <div class="input-group">
+      <input type="file" id="pic" placeholder="Enter pic"/>
+    </div>
 
     <div class="tip">TIP: Use your WhatsApp number for notification</div>
 
@@ -212,45 +216,73 @@
       <p id="modalMessage">This is a custom alert.</p>
       <button onclick="closeAlert()">OK</button>
     </div>
-  </div>
+  </div> 
+<script>
+  function showAlert(message, callback) {
+    document.getElementById("modalMessage").innerText = message;
+    document.getElementById("customAlert").style.display = 'flex';
+    window._alertCallback = callback;
+  }
 
-  <script>
-    function showAlert(message, callback) {
-      document.getElementById("modalMessage").innerText = message;
-      document.getElementById("customAlert").style.display = 'flex';
-      window._alertCallback = callback;
+  function closeAlert() {
+    document.getElementById("customAlert").style.display = 'none';
+    if (typeof window._alertCallback === 'function') {
+      window._alertCallback();
+      window._alertCallback = null;
+    }
+  }
+
+  function saveNumber() {
+    const mobile = document.getElementById('mobile').value.trim();
+    const code = document.getElementById('countryCode').value;
+    const name = document.getElementById('name').value.trim();
+    const file = document.getElementById('pic').files[0];
+
+    if (mobile.length !== 10 || isNaN(mobile)) {
+      showAlert("Please enter a valid 10-digit mobile number.");
+      return;
     }
 
-    function closeAlert() {
-      document.getElementById("customAlert").style.display = 'none';
-      if (typeof window._alertCallback === 'function') {
-        window._alertCallback();
-        window._alertCallback = null;
-      }
+    if (name.length < 2) {
+      showAlert("Please enter a valid name.");
+      return;
     }
 
-    function saveNumber() {
-      const mobile = document.getElementById('mobile').value.trim();
-      const code = document.getElementById('countryCode').value;
-      const name = document.getElementById('name').value.trim();
+    const fullMobile = code + mobile;
 
-      if (mobile.length !== 10 || isNaN(mobile)) {
-        showAlert("Please enter a valid 10-digit mobile number.");
-        return;
-      }
+    // If image is selected, read and store it as base64
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageBase64 = e.target.result;
 
-      if (name.length < 2) {
-        showAlert("Please enter a valid name.");
-        return;
-      }
+        const profile = {
+          name: name,
+          mobile: fullMobile,
+          image: imageBase64
+        };
 
-      localStorage.setItem("userMobile", code + mobile);
+        localStorage.setItem("userProfile", JSON.stringify(profile));
+        localStorage.setItem("userMobile", fullMobile);
+        localStorage.setItem("userName", name);
+        window.location.href = "index.html";
+      };
+
+      reader.readAsDataURL(file);
+    } else {
+      // No image selected – use default avatar
+      const profile = {
+        name: name,
+        mobile: fullMobile,
+        image: "https://i.ibb.co/fXpT6dP/default-avatar.png"
+      };
+
+      localStorage.setItem("userProfile", JSON.stringify(profile));
+      localStorage.setItem("userMobile", fullMobile);
       localStorage.setItem("userName", name);
-      localStorage.setItem("userProfile", JSON.stringify({ name, mobile: code + mobile }));
-
-      window.location.href = "index.html"; // or wherever you want to go next
+      window.location.href = "index.html";
     }
-  </script>
-
+  }
+</script>
 </body>
 </html>

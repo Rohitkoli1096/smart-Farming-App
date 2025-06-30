@@ -290,6 +290,23 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script>
+  // Load user profile from localStorage
+  const userProfile = JSON.parse(localStorage.getItem("userProfile") || "{}");
+  document.getElementById("profileName").innerText = userProfile.name || "You";
+  document.getElementById("profileMobile").innerText = userProfile.mobile || "";
+  document.getElementById("profilePic").src = userProfile.image || "https://i.pravatar.cc/100";
+
+  // Alert Modal Functions
+  function showAlert(message) {
+    document.getElementById("alertText").innerText = message;
+    document.getElementById("customAlert").style.display = "flex";
+  }
+
+  function closeAlert() {
+    document.getElementById("customAlert").style.display = "none";
+  }
+
+  // Post handling functions
   function getPosts() {
     return JSON.parse(localStorage.getItem("posts")) || [];
   }
@@ -301,19 +318,24 @@
   function createPost() {
     const caption = document.getElementById("newCaption").value.trim();
     const file = document.getElementById("newImage").files[0];
-    const userProfile = JSON.parse(localStorage.getItem("userProfile") || "{}");
 
-    if (!caption && !file) return alert("Please add text or image.");
+    if (!userProfile.name || !userProfile.image) {
+      return showAlert("❗ Please register before posting.");
+    }
+
+    if (!caption && !file) {
+      return showAlert("⚠️ Please add text or an image to post.");
+    }
 
     const reader = new FileReader();
     reader.onload = function (e) {
       const posts = getPosts();
       posts.unshift({
-        username: userProfile.name || "You",
-        userImg: userProfile.image || "https://i.pravatar.cc/100",
+        username: userProfile.name,
+        userImg: userProfile.image,
         img: file ? e.target.result : "",
         caption,
-        likes: 0,
+        likes: 10,
         liked: false,
         comments: [],
         owner: true
@@ -322,15 +344,16 @@
       renderPosts();
     };
 
-    if (file) reader.readAsDataURL(file);
-    else {
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
       const posts = getPosts();
       posts.unshift({
-        username: userProfile.name || "You",
-        userImg: userProfile.image || "https://i.pravatar.cc/100",
+        username: userProfile.name,
+        userImg: userProfile.image,
         img: "",
         caption,
-        likes: 0,
+        likes: 10,
         liked: false,
         comments: [],
         owner: true
@@ -339,6 +362,7 @@
       renderPosts();
     }
 
+    // Clear form inputs
     document.getElementById("newCaption").value = "";
     document.getElementById("newImage").value = "";
   }
@@ -356,7 +380,7 @@
             <img src="${p.userImg}" />
             <strong>${p.username}</strong>
           </div>
-          ${p.owner ? `<button onclick="deletePost(${i})" title="Delete Post">❌</button>` : ""}
+          ${p.owner ? `<button onclick="deletePost(${i})">❌</button>` : ""}
         </div>
         ${p.img ? `<img src="${p.img}" class="post-image" />` : ""}
         <div class="post-actions">
@@ -370,7 +394,7 @@
         </div>
         <div class="caption"><strong>${p.username}</strong> ${p.caption}</div>
         <div class="comments" id="comments-${i}">
-          ${p.comments.length ? p.comments.map(c => `<div class="comment">${c}</div>`).join("") : `<i style='color:gray;cursor:pointer;' onclick='toggleCommentBox(${i})'>Add a comment</i>`}
+          ${p.comments.length ? p.comments.map(c => `<div class="comment">${c}</div>`).join("") : `<i style='color:gray;'>No comments yet.</i>`}
         </div>
         <div class="comment-box" id="box-${i}" style="display:none;">
           <input type="text" placeholder="Write a comment..." onkeydown="commentOnPost(event, ${i}, this)" />
@@ -396,7 +420,7 @@
   function commentOnPost(e, i, input) {
     if (e.key === "Enter" && input.value.trim()) {
       const posts = getPosts();
-      posts[i].comments.push("You: " + input.value.trim());
+      posts[i].comments.push(`${userProfile.name}: ${input.value.trim()}`);
       savePosts(posts);
       renderPosts();
     }
@@ -405,19 +429,20 @@
   function sharePost(i) {
     const posts = getPosts();
     navigator.clipboard.writeText(`Check this post: ${posts[i].caption}`).then(() => {
-      alert("Post caption copied to clipboard!");
+      showAlert("✅ Post caption copied to clipboard!");
     });
   }
 
   function deletePost(i) {
     const posts = getPosts();
-    if (posts[i].owner && confirm("Are you sure you want to delete this post?")) {
+    if (confirm("Are you sure you want to delete this post?")) {
       posts.splice(i, 1);
       savePosts(posts);
       renderPosts();
     }
   }
 
+  // Render on load
   renderPosts();
 </script>
 </body>

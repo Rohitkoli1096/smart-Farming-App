@@ -291,8 +291,8 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-<script>
-// GroVia - Advanced Community Script
+<<script>
+// GroVia Community - Final Modern Script with App Alert + All Posts Display
 
 const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
   name: "Guest",
@@ -301,7 +301,6 @@ const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
 };
 const userId = userProfile.mobile || "guest";
 
-// 5+ rich sample posts with real crop images
 const samplePosts = [
   {
     username: "Ravi Kumar",
@@ -327,7 +326,7 @@ const samplePosts = [
     username: "Vikram Singh",
     userImg: "https://i.pravatar.cc/100?u=3",
     ownerId: "demo3",
-    caption: "First time trying organic compost. Results are promising.",
+    caption: "Trying organic compost this season. Loving the results!",
     img: "https://source.unsplash.com/400x300/?organic,farming",
     likes: 7,
     likedBy: [],
@@ -337,7 +336,7 @@ const samplePosts = [
     username: "Meena Patel",
     userImg: "https://i.pravatar.cc/100?u=4",
     ownerId: "demo4",
-    caption: "Sugarcane harvest in full swing! 🚜",
+    caption: "Sugarcane harvest underway! 🚜",
     img: "https://source.unsplash.com/400x300/?sugarcane,farm",
     likes: 11,
     likedBy: [],
@@ -352,22 +351,16 @@ const samplePosts = [
     likes: 12,
     likedBy: [],
     comments: []
-  },
-  {
-    username: "Leela Sharma",
-    userImg: "https://i.pravatar.cc/100?u=6",
-    ownerId: "demo6",
-    caption: "Started beekeeping beside my crops. 🐝",
-    img: "https://source.unsplash.com/400x300/?beekeeping,agriculture",
-    likes: 5,
-    likedBy: [],
-    comments: []
   }
 ];
 
 function getPosts() {
-  const local = JSON.parse(localStorage.getItem("posts")) || [];
-  return local.length === 0 ? [...samplePosts] : local;
+  let stored = JSON.parse(localStorage.getItem("posts"));
+  if (!stored || !stored.length) {
+    localStorage.setItem("posts", JSON.stringify(samplePosts));
+    return [...samplePosts];
+  }
+  return stored;
 }
 
 function savePosts(posts) {
@@ -415,9 +408,9 @@ function renderPosts() {
   const feed = document.getElementById("feed");
   feed.innerHTML = "";
   let posts = getPosts();
-  const mine = posts.filter(p => p.ownerId === userId);
-  const others = posts.filter(p => p.ownerId !== userId);
-  posts = [...mine, ...others];
+  const myPosts = posts.filter(p => p.ownerId === userId);
+  const otherPosts = posts.filter(p => p.ownerId !== userId);
+  posts = [...myPosts, ...otherPosts];
 
   posts.forEach((p, i) => {
     const isOwner = p.ownerId === userId;
@@ -482,7 +475,7 @@ function commentOnPost(e, i, input) {
 function sharePost(i) {
   const post = getPosts()[i];
   navigator.clipboard.writeText(`${post.caption} - from GroVia`).then(() => {
-    showAlert("📋 Post copied to clipboard!");
+    showAlert("📋 Post caption copied!");
   });
 }
 
@@ -520,7 +513,6 @@ function showAlert(message) {
   setTimeout(() => alertBox.remove(), 3000);
 }
 
-// Render posts on load
 renderPosts();
 </script>
 

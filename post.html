@@ -291,229 +291,214 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
-<<script>
-// GroVia Community - Final Modern Script with App Alert + All Posts Display
+<script type="module">
 
-const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
-  name: "Guest",
-  image: "https://i.pravatar.cc/100",
-  mobile: "guest"
-};
-const userId = userProfile.mobile || "guest";
+  // 1. Firebase configuration (replace with your actual credentials)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, set, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-const samplePosts = [
-  {
-    username: "Ravi Kumar",
-    userImg: "https://i.pravatar.cc/100?u=1",
-    ownerId: "demo1",
-    caption: "🌾 My wheat crop flourished using drip irrigation!",
-    img: "https://source.unsplash.com/400x300/?wheat,farm",
-    likes: 14,
-    likedBy: [],
-    comments: ["Sita: Awesome!", "Karan: Well done!"]
-  },
-  {
-    username: "Anita Desai",
-    userImg: "https://i.pravatar.cc/100?u=2",
-    ownerId: "demo2",
-    caption: "Just harvested mustard — golden fields! 💛",
-    img: "https://source.unsplash.com/400x300/?mustard,crop",
-    likes: 9,
-    likedBy: [],
-    comments: []
-  },
-  {
-    username: "Vikram Singh",
-    userImg: "https://i.pravatar.cc/100?u=3",
-    ownerId: "demo3",
-    caption: "Trying organic compost this season. Loving the results!",
-    img: "https://source.unsplash.com/400x300/?organic,farming",
-    likes: 7,
-    likedBy: [],
-    comments: []
-  },
-  {
-    username: "Meena Patel",
-    userImg: "https://i.pravatar.cc/100?u=4",
-    ownerId: "demo4",
-    caption: "Sugarcane harvest underway! 🚜",
-    img: "https://source.unsplash.com/400x300/?sugarcane,farm",
-    likes: 11,
-    likedBy: [],
-    comments: []
-  },
-  {
-    username: "Suresh Lal",
-    userImg: "https://i.pravatar.cc/100?u=5",
-    ownerId: "demo5",
-    caption: "Rain-fed paddy success this year! 🌧️🌾",
-    img: "https://source.unsplash.com/400x300/?paddy,monsoon",
-    likes: 12,
-    likedBy: [],
-    comments: []
-  }
-];
-
-function getPosts() {
-  let stored = JSON.parse(localStorage.getItem("posts"));
-  if (!stored || !stored.length) {
-    localStorage.setItem("posts", JSON.stringify(samplePosts));
-    return [...samplePosts];
-  }
-  return stored;
-}
-
-function savePosts(posts) {
-  localStorage.setItem("posts", JSON.stringify(posts));
-}
-
-function createPost() {
-  const caption = document.getElementById("newCaption").value.trim();
-  const file = document.getElementById("newImage").files[0];
-  if (!caption && !file) return showAlert("Please add a caption or image.");
-
-  const newPost = {
-    username: userProfile.name,
-    userImg: userProfile.image,
-    ownerId: userId,
-    caption,
-    img: "",
-    likes: 0,
-    likedBy: [],
-    comments: []
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    databaseURL: "YOUR_DATABASE_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    newPost.img = file ? e.target.result : "";
-    const posts = getPosts();
-    posts.unshift(newPost);
-    savePosts(posts);
-    renderPosts();
-  };
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
-  if (file) reader.readAsDataURL(file);
-  else {
-    const posts = getPosts();
-    posts.unshift(newPost);
-    savePosts(posts);
-    renderPosts();
+  const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
+    name: "Guest",
+    image: "https://i.pravatar.cc/100",
+    mobile: "guest"
+  };
+  const userId = userProfile.mobile || "guest";
+
+  const demoLoadedKey = "demoPostsLoaded";
+  const demoPosts = [
+    {
+      username: "Ravi Kumar",
+      userImg: "https://i.pravatar.cc/100?u=1",
+      ownerId: "demo1",
+      caption: "🌾 My wheat crop flourished using drip irrigation!",
+      img: "https://source.unsplash.com/400x300/?wheat,farm",
+      likes: 14,
+      likedBy: [],
+      comments: ["Sita: Awesome!", "Karan: Well done!"]
+    },
+    {
+      username: "Anita Desai",
+      userImg: "https://i.pravatar.cc/100?u=2",
+      ownerId: "demo2",
+      caption: "Just harvested mustard — golden fields! 💛",
+      img: "https://source.unsplash.com/400x300/?mustard,crop",
+      likes: 9,
+      likedBy: [],
+      comments: []
+    },
+    {
+      username: "Meena Patel",
+      userImg: "https://i.pravatar.cc/100?u=4",
+      ownerId: "demo4",
+      caption: "Sugarcane harvest underway! 🚜",
+      img: "https://source.unsplash.com/400x300/?sugarcane,farm",
+      likes: 11,
+      likedBy: [],
+      comments: []
+    }
+  ];
+
+  // 2. Load Demo Posts if not already added
+  const postsRef = ref(db, "posts");
+  if (!localStorage.getItem(demoLoadedKey)) {
+    demoPosts.forEach(post => {
+      push(postsRef, post);
+    });
+    localStorage.setItem(demoLoadedKey, "true");
   }
 
-  document.getElementById("newCaption").value = "";
-  document.getElementById("newImage").value = "";
-}
+  // 3. Create a new post
+  window.createPost = function () {
+    const caption = document.getElementById("newCaption").value.trim();
+    const file = document.getElementById("newImage").files[0];
 
-function renderPosts() {
-  const feed = document.getElementById("feed");
-  feed.innerHTML = "";
-  let posts = getPosts();
-  const myPosts = posts.filter(p => p.ownerId === userId);
-  const otherPosts = posts.filter(p => p.ownerId !== userId);
-  posts = [...myPosts, ...otherPosts];
+    if (!caption && !file) return showAlert("Please add a caption or image.");
 
-  posts.forEach((p, i) => {
-    const isOwner = p.ownerId === userId;
-    const isLiked = p.likedBy.includes(userId);
-    const post = document.createElement("div");
-    post.className = "post";
-    post.innerHTML = `
-      <div class="post-header">
-        <div class="user-info">
-          <img src="${p.userImg}" alt="${p.username}" />
-          <strong>${p.username}</strong>
+    const newPost = {
+      username: userProfile.name,
+      userImg: userProfile.image,
+      ownerId: userId,
+      caption,
+      img: "",
+      likes: 0,
+      likedBy: [],
+      comments: []
+    };
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      newPost.img = file ? e.target.result : "";
+      push(postsRef, newPost);
+      document.getElementById("newCaption").value = "";
+      document.getElementById("newImage").value = "";
+    };
+
+    if (file) reader.readAsDataURL(file);
+    else push(postsRef, newPost);
+  };
+
+  // 4. Render posts live
+  onValue(postsRef, snapshot => {
+    const feed = document.getElementById("feed");
+    feed.innerHTML = "";
+    const posts = [];
+    snapshot.forEach(child => {
+      posts.push({ key: child.key, ...child.val() });
+    });
+    posts.reverse().forEach((p, i) => {
+      const isOwner = p.ownerId === userId;
+      const isLiked = (p.likedBy || []).includes(userId);
+      const div = document.createElement("div");
+      div.className = "post";
+      div.innerHTML = `
+        <div class="post-header">
+          <div class="user-info">
+            <img src="${p.userImg}" alt="${p.username}" />
+            <strong>${p.username}</strong>
+          </div>
+          ${isOwner ? `<button onclick="deletePost('${p.key}')">🗑️</button>` : ""}
         </div>
-        ${isOwner ? `<button onclick="deletePost(${i})" title="Delete">🗑️</button>` : ""}
-      </div>
-      ${p.img ? `<img src="${p.img}" class="post-image" />` : ""}
-      <div class="post-actions">
-        <ion-icon name="${isLiked ? 'heart' : 'heart-outline'}" class="${isLiked ? 'liked' : ''}" onclick="likePost(${i})"></ion-icon>
-        <ion-icon name="chatbubble-outline" onclick="toggleCommentBox(${i})"></ion-icon>
-        <ion-icon name="share-social-outline" onclick="sharePost(${i})"></ion-icon>
-      </div>
-      <div class="likes">${p.likes} likes</div>
-      <div class="caption"><strong>${p.username}</strong> ${p.caption}</div>
-      <div class="comments" id="comments-${i}">
-        ${p.comments.map(c => `<div class="comment">${c}</div>`).join("")}
-      </div>
-      <div class="comment-box" id="box-${i}" style="display:none;">
-        <input type="text" placeholder="Write a comment..." onkeydown="commentOnPost(event, ${i}, this)" />
-      </div>
+        ${p.img ? `<img src="${p.img}" class="post-image" />` : ""}
+        <div class="post-actions">
+          <ion-icon name="${isLiked ? 'heart' : 'heart-outline'}" class="${isLiked ? 'liked' : ''}" onclick="likePost('${p.key}', ${p.likes || 0})"></ion-icon>
+          <ion-icon name="chatbubble-outline" onclick="toggleCommentBox('${p.key}')"></ion-icon>
+          <ion-icon name="share-social-outline" onclick="sharePost('${p.caption}')"></ion-icon>
+        </div>
+        <div class="likes">${p.likes || 0} likes</div>
+        <div class="caption"><strong>${p.username}</strong> ${p.caption}</div>
+        <div class="comments" id="comments-${p.key}">
+          ${(p.comments || []).map(c => `<div class="comment">${c}</div>`).join("")}
+        </div>
+        <div class="comment-box" id="box-${p.key}" style="display:none;">
+          <input type="text" placeholder="Write a comment..." onkeydown="commentOnPost(event, '${p.key}', this)" />
+        </div>
+      `;
+      feed.appendChild(div);
+    });
+  });
+
+  // 5. Actions
+  window.likePost = function (key, currentLikes) {
+    const postRef = ref(db, `posts/${key}`);
+    onValue(postRef, snapshot => {
+      const data = snapshot.val();
+      let likedBy = data.likedBy || [];
+      if (likedBy.includes(userId)) {
+        likedBy = likedBy.filter(id => id !== userId);
+        update(postRef, { likes: (data.likes || 0) - 1, likedBy });
+      } else {
+        likedBy.push(userId);
+        update(postRef, { likes: (data.likes || 0) + 1, likedBy });
+      }
+    }, { onlyOnce: true });
+  };
+
+  window.toggleCommentBox = function (key) {
+    const box = document.getElementById(`box-${key}`);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+  };
+
+  window.commentOnPost = function (e, key, input) {
+    if (e.key === "Enter" && input.value.trim()) {
+      const postRef = ref(db, `posts/${key}`);
+      onValue(postRef, snapshot => {
+        const data = snapshot.val();
+        const comments = data.comments || [];
+        comments.push(`${userProfile.name}: ${input.value.trim()}`);
+        update(postRef, { comments });
+        input.value = "";
+      }, { onlyOnce: true });
+    }
+  };
+
+  window.sharePost = function (caption) {
+    navigator.clipboard.writeText(`${caption} - from GroVia`).then(() => {
+      showAlert("📋 Caption copied!");
+    });
+  };
+
+  window.deletePost = function (key) {
+    if (confirm("Delete this post?")) {
+      remove(ref(db, `posts/${key}`));
+    }
+  };
+
+  function showAlert(message) {
+    let alertBox = document.getElementById("customAlert");
+    if (alertBox) alertBox.remove();
+
+    alertBox = document.createElement("div");
+    alertBox.id = "customAlert";
+    alertBox.style = `
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-size: 15px;
+      z-index: 9999;
     `;
-    feed.appendChild(post);
-  });
-}
-
-function likePost(i) {
-  const posts = getPosts();
-  const post = posts[i];
-  if (post.likedBy.includes(userId)) {
-    post.likes--;
-    post.likedBy = post.likedBy.filter(uid => uid !== userId);
-  } else {
-    post.likes++;
-    post.likedBy.push(userId);
+    alertBox.innerText = message;
+    document.body.appendChild(alertBox);
+    setTimeout(() => alertBox.remove(), 3000);
   }
-  savePosts(posts);
-  renderPosts();
-}
-
-function toggleCommentBox(i) {
-  const box = document.getElementById(`box-${i}`);
-  box.style.display = box.style.display === "block" ? "none" : "block";
-}
-
-function commentOnPost(e, i, input) {
-  if (e.key === "Enter" && input.value.trim()) {
-    const posts = getPosts();
-    posts[i].comments.push(`${userProfile.name}: ${input.value.trim()}`);
-    savePosts(posts);
-    renderPosts();
-  }
-}
-
-function sharePost(i) {
-  const post = getPosts()[i];
-  navigator.clipboard.writeText(`${post.caption} - from GroVia`).then(() => {
-    showAlert("📋 Post caption copied!");
-  });
-}
-
-function deletePost(i) {
-  const posts = getPosts();
-  if (posts[i].ownerId === userId && confirm("Delete this post?")) {
-    posts.splice(i, 1);
-    savePosts(posts);
-    renderPosts();
-  }
-}
-
-function showAlert(message) {
-  let alertBox = document.getElementById("customAlert");
-  if (alertBox) alertBox.remove();
-
-  alertBox = document.createElement("div");
-  alertBox.id = "customAlert";
-  alertBox.style = `
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    font-size: 15px;
-    z-index: 9999;
-    animation: fadeOut 3s ease forwards;
-  `;
-  alertBox.innerText = message;
-  document.body.appendChild(alertBox);
-  setTimeout(() => alertBox.remove(), 3000);
-}
-
-renderPosts();
 </script>
 
 

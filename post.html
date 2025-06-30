@@ -292,6 +292,8 @@
 
 
 <script>
+// GroVia - Advanced Community Script
+
 const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
   name: "Guest",
   image: "https://i.pravatar.cc/100",
@@ -299,24 +301,25 @@ const userProfile = JSON.parse(localStorage.getItem("userProfile")) || {
 };
 const userId = userProfile.mobile || "guest";
 
+// 5+ rich sample posts with real crop images
 const samplePosts = [
   {
     username: "Ravi Kumar",
     userImg: "https://i.pravatar.cc/100?u=1",
     ownerId: "demo1",
-    caption: "🌾 My wheat crop is thriving thanks to drip irrigation!",
+    caption: "🌾 My wheat crop flourished using drip irrigation!",
     img: "https://source.unsplash.com/400x300/?wheat,farm",
-    likes: 12,
+    likes: 14,
     likedBy: [],
-    comments: ["Sita: Great work Ravi!", "Karan: Inspiring!"]
+    comments: ["Sita: Awesome!", "Karan: Well done!"]
   },
   {
     username: "Anita Desai",
     userImg: "https://i.pravatar.cc/100?u=2",
     ownerId: "demo2",
-    caption: "🌻 Just harvested mustard, feeling proud!",
-    img: "https://source.unsplash.com/400x300/?mustard,field",
-    likes: 8,
+    caption: "Just harvested mustard — golden fields! 💛",
+    img: "https://source.unsplash.com/400x300/?mustard,crop",
+    likes: 9,
     likedBy: [],
     comments: []
   },
@@ -324,9 +327,9 @@ const samplePosts = [
     username: "Vikram Singh",
     userImg: "https://i.pravatar.cc/100?u=3",
     ownerId: "demo3",
-    caption: "🌱 Trying organic methods this season! #GreenFarming",
-    img: "https://source.unsplash.com/400x300/?organic,plant",
-    likes: 5,
+    caption: "First time trying organic compost. Results are promising.",
+    img: "https://source.unsplash.com/400x300/?organic,farming",
+    likes: 7,
     likedBy: [],
     comments: []
   },
@@ -334,9 +337,9 @@ const samplePosts = [
     username: "Meena Patel",
     userImg: "https://i.pravatar.cc/100?u=4",
     ownerId: "demo4",
-    caption: "🥥 Sugarcane is almost ready to harvest!",
-    img: "https://source.unsplash.com/400x300/?sugarcane",
-    likes: 15,
+    caption: "Sugarcane harvest in full swing! 🚜",
+    img: "https://source.unsplash.com/400x300/?sugarcane,farm",
+    likes: 11,
     likedBy: [],
     comments: []
   },
@@ -344,29 +347,37 @@ const samplePosts = [
     username: "Suresh Lal",
     userImg: "https://i.pravatar.cc/100?u=5",
     ownerId: "demo5",
-    caption: "🌾 Successful paddy season with rain-fed irrigation!",
-    img: "https://source.unsplash.com/400x300/?paddy",
-    likes: 10,
+    caption: "Rain-fed paddy success this year! 🌧️🌾",
+    img: "https://source.unsplash.com/400x300/?paddy,monsoon",
+    likes: 12,
+    likedBy: [],
+    comments: []
+  },
+  {
+    username: "Leela Sharma",
+    userImg: "https://i.pravatar.cc/100?u=6",
+    ownerId: "demo6",
+    caption: "Started beekeeping beside my crops. 🐝",
+    img: "https://source.unsplash.com/400x300/?beekeeping,agriculture",
+    likes: 5,
     likedBy: [],
     comments: []
   }
 ];
 
 function getPosts() {
-  const saved = JSON.parse(localStorage.getItem("posts")) || [];
-  return [...samplePosts, ...saved];
+  const local = JSON.parse(localStorage.getItem("posts")) || [];
+  return local.length === 0 ? [...samplePosts] : local;
 }
 
 function savePosts(posts) {
-  const onlyUserPosts = posts.filter(p => p.ownerId !== "demo1" && p.ownerId !== "demo2" && p.ownerId !== "demo3" && p.ownerId !== "demo4" && p.ownerId !== "demo5");
-  localStorage.setItem("posts", JSON.stringify(onlyUserPosts));
+  localStorage.setItem("posts", JSON.stringify(posts));
 }
 
 function createPost() {
   const caption = document.getElementById("newCaption").value.trim();
   const file = document.getElementById("newImage").files[0];
-
-  if (!caption && !file) return showAlert("📢 Add text or image to post.");
+  if (!caption && !file) return showAlert("Please add a caption or image.");
 
   const newPost = {
     username: userProfile.name,
@@ -381,22 +392,19 @@ function createPost() {
 
   const reader = new FileReader();
   reader.onload = function (e) {
-    newPost.img = e.target.result;
+    newPost.img = file ? e.target.result : "";
     const posts = getPosts();
     posts.unshift(newPost);
     savePosts(posts);
     renderPosts();
-    showAlert("✅ Post created!");
   };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
+  if (file) reader.readAsDataURL(file);
+  else {
     const posts = getPosts();
     posts.unshift(newPost);
     savePosts(posts);
     renderPosts();
-    showAlert("✅ Post created!");
   }
 
   document.getElementById("newCaption").value = "";
@@ -406,12 +414,14 @@ function createPost() {
 function renderPosts() {
   const feed = document.getElementById("feed");
   feed.innerHTML = "";
-  const posts = getPosts();
+  let posts = getPosts();
+  const mine = posts.filter(p => p.ownerId === userId);
+  const others = posts.filter(p => p.ownerId !== userId);
+  posts = [...mine, ...others];
 
   posts.forEach((p, i) => {
     const isOwner = p.ownerId === userId;
     const isLiked = p.likedBy.includes(userId);
-
     const post = document.createElement("div");
     post.className = "post";
     post.innerHTML = `
@@ -472,45 +482,45 @@ function commentOnPost(e, i, input) {
 function sharePost(i) {
   const post = getPosts()[i];
   navigator.clipboard.writeText(`${post.caption} - from GroVia`).then(() => {
-    showAlert("📋 Post copied!");
+    showAlert("📋 Post copied to clipboard!");
   });
 }
 
 function deletePost(i) {
   const posts = getPosts();
-  if (posts[i].ownerId === userId && confirm("🗑️ Delete this post?")) {
+  if (posts[i].ownerId === userId && confirm("Delete this post?")) {
     posts.splice(i, 1);
     savePosts(posts);
     renderPosts();
-    showAlert("🧹 Post deleted!");
   }
 }
 
 function showAlert(message) {
-  let alert = document.getElementById("customAlert");
-  if (alert) alert.remove();
+  let alertBox = document.getElementById("customAlert");
+  if (alertBox) alertBox.remove();
 
-  alert = document.createElement("div");
-  alert.id = "customAlert";
-  alert.style = `
+  alertBox = document.createElement("div");
+  alertBox.id = "customAlert";
+  alertBox.style = `
     position: fixed;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    background: #323232;
-    color: #fff;
-    padding: 14px 24px;
+    background: #333;
+    color: white;
+    padding: 12px 24px;
     border-radius: 30px;
-    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-size: 15px;
     z-index: 9999;
-    animation: fadeOut 3s forwards ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeOut 3s ease forwards;
   `;
-  alert.innerText = message;
-  document.body.appendChild(alert);
-  setTimeout(() => alert.remove(), 3000);
+  alertBox.innerText = message;
+  document.body.appendChild(alertBox);
+  setTimeout(() => alertBox.remove(), 3000);
 }
 
+// Render posts on load
 renderPosts();
 </script>
 
